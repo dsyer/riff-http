@@ -1,0 +1,45 @@
+apiVersion: projectriff.io/v1
+kind: Function
+metadata:
+  name: http
+spec:
+  protocol: grpc
+  input: start
+  output: http
+  container:
+    image: projectriff/http:0.0.1
+  idleTimeoutMs: 3600000
+---
+
+apiVersion : projectriff.io/v1
+kind: Topic
+metadata:
+  name: http
+spec:
+  partitions: 1
+
+---
+
+apiVersion : projectriff.io/v1
+kind: Topic
+metadata:
+  name: start
+spec:
+  partitions: 1
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: http
+  namespace: default
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
+  selector:
+    function: http
+  sessionAffinity: None
+  type: LoadBalancer

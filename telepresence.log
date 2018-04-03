@@ -1,0 +1,839 @@
+   0.0 TL | Telepresence launched at Thu Mar 22 10:02:21 2018
+   0.0 TL |   ['/usr/bin/telepresence', '-s', 'doubler:main', '--expose', '10382']
+   0.0 TL | Scout info: {'latest_version': '0.72', 'application': 'telepresence', 'notices': []}
+   0.0 TL | Context: gke, namespace: default, kubectl_command: kubectl
+   0.0 TL | [1] Capturing: (['kubectl', '--context', 'gke', 'cluster-info'],)...
+   0.8 TL | [1] captured.
+   0.8 TL | [2] Capturing: (['ssh', '-V'],)...
+   0.8 TL | [2] captured.
+   0.8 TL | [3] Capturing: (['which', 'torsocks'],)...
+   0.8 TL | [3] captured.
+   0.8 TL | [4] Capturing: (['which', 'sshfs'],)...
+   0.8 TL | [4] captured.
+   0.8 TL | [5] Capturing: (['which', 'conntrack'],)...
+   0.8 TL | [5] captured.
+   0.8 TL | [6] Capturing: (['kubectl', '--context', 'gke', '--namespace', 'default', 'get', 'deployment', '-o', 'json', '--export', 'doubler'],)...
+   1.5 TL | [6] captured.
+   1.5 TL | [7] Running: (['kubectl', '--context', 'gke', '--namespace', 'default', 'delete', 'deployment', 'doubler'],)...
+   6.6 7 | deployment "doubler" deleted
+   6.6 TL | [7] ran.
+   6.6 TL | [8] Running: (['kubectl', '--context', 'gke', '--namespace', 'default', 'apply', '-f', '-'],)...
+   7.7 8 | deployment "doubler" created
+   7.7 TL | [8] ran.
+   7.7 TL | [9] Capturing: (['kubectl', '--context', 'gke', '--namespace', 'default', 'get', 'deployment', '-o', 'json', '--export', '--selector=telepresence=74c41a03-216d-4c6d-a136-ed1e33d6e7ff'],)...
+   8.6 TL | [9] captured.
+   8.6 TL | Expected metadata for pods: {'creationTimestamp': None, 'labels': {'telepresence': '74c41a03-216d-4c6d-a136-ed1e33d6e7ff', 'function': 'doubler'}, 'name': 'doubler'}
+   8.6 TL | [10] Capturing: (['kubectl', '--context', 'gke', '--namespace', 'default', 'get', 'pod', '-o', 'json', '--export'],)...
+   9.6 TL | [10] captured.
+   9.6 TL | Checking {'release': 'demo', 'app': 'riff', 'pod-template-hash': '2973641237', 'component': 'function-controller'} (phase Running)...
+   9.6 TL | Labels don't match.
+   9.6 TL | Checking {'release': 'demo', 'app': 'riff', 'pod-template-hash': '351612125', 'component': 'http-gateway'} (phase Running)...
+   9.6 TL | Labels don't match.
+   9.6 TL | Checking {'release': 'demo', 'app': 'riff', 'pod-template-hash': '4121341951', 'component': 'topic-controller'} (phase Running)...
+   9.6 TL | Labels don't match.
+   9.6 TL | Checking {'function': 'doubler', 'pod-template-hash': '2551537177'} (phase Running)...
+   9.6 TL | Labels don't match.
+   9.6 TL | Checking {'telepresence': '74c41a03-216d-4c6d-a136-ed1e33d6e7ff', 'function': 'doubler', 'pod-template-hash': '315149'} (phase Running)...
+   9.6 TL | Looks like we've found our pod!
+   9.6 TL | [11] Capturing: (['kubectl', '--context', 'gke', '--namespace', 'default', 'get', 'pod', 'doubler-75958f-zv4z2', '-o', 'json'],)...
+  10.3 TL | [11] captured.
+  10.3 TL | [12] Launching: (['kubectl', '--context', 'gke', '--namespace', 'default', 'logs', '-f', 'doubler-75958f-zv4z2', '--container', 'main'],)...
+  10.3 TL | [13] Launching: (['kubectl', '--context', 'gke', '--namespace', 'default', 'port-forward', 'doubler-75958f-zv4z2', '44059:8022'],)...
+  10.3 TL | [14] Running: (['ssh', '-F', '/dev/null', '-q', '-oStrictHostKeyChecking=no', '-oUserKnownHostsFile=/dev/null', '-p', '44059', 'telepresence@localhost', '/bin/true'],)...
+  10.3 TL | [14] exit 255.
+  10.5 TL | [15] Running: (['ssh', '-F', '/dev/null', '-q', '-oStrictHostKeyChecking=no', '-oUserKnownHostsFile=/dev/null', '-p', '44059', 'telepresence@localhost', '/bin/true'],)...
+  10.6 TL | [15] exit 255.
+  10.8 TL | [16] Running: (['ssh', '-F', '/dev/null', '-q', '-oStrictHostKeyChecking=no', '-oUserKnownHostsFile=/dev/null', '-p', '44059', 'telepresence@localhost', '/bin/true'],)...
+  10.8 TL | [16] exit 255.
+  11.1 TL | [17] Running: (['ssh', '-F', '/dev/null', '-q', '-oStrictHostKeyChecking=no', '-oUserKnownHostsFile=/dev/null', '-p', '44059', 'telepresence@localhost', '/bin/true'],)...
+  11.1 TL | [17] exit 255.
+  11.3 TL | [18] Running: (['ssh', '-F', '/dev/null', '-q', '-oStrictHostKeyChecking=no', '-oUserKnownHostsFile=/dev/null', '-p', '44059', 'telepresence@localhost', '/bin/true'],)...
+  11.3 TL | [18] exit 255.
+  11.4 12 | Listening...
+  11.4 12 | 2018-03-22T10:02:30+0000 [-] Loading ./forwarder.py...
+  11.4 12 | 2018-03-22T10:02:30+0000 [-] SOCKSv5Factory starting on 9050
+  11.4 12 | 2018-03-22T10:02:30+0000 [socks.SOCKSv5Factory#info] Starting factory <socks.SOCKSv5Factory object at 0x7f3a77d592e8>
+  11.4 12 | 2018-03-22T10:02:30+0000 [-] /etc/resolv.conf changed, reparsing
+  11.4 12 | 2018-03-22T10:02:30+0000 [-] Resolver added ('10.35.240.10', 53) to server list
+  11.4 12 | 2018-03-22T10:02:30+0000 [-] DNSDatagramProtocol starting on 9053
+  11.4 12 | 2018-03-22T10:02:30+0000 [-] Starting protocol <twisted.names.dns.DNSDatagramProtocol object at 0x7f3a77cea5c0>
+  11.4 12 | 2018-03-22T10:02:30+0000 [-] Loaded.
+  11.6 TL | [19] Running: (['ssh', '-F', '/dev/null', '-q', '-oStrictHostKeyChecking=no', '-oUserKnownHostsFile=/dev/null', '-p', '44059', 'telepresence@localhost', '/bin/true'],)...
+  11.6 TL | [19] exit 255.
+  11.6 12 | 2018-03-22T10:02:30+0000 [twisted.scripts._twistd_unix.UnixAppLogger#info] twistd 17.9.0 (/usr/bin/python3.6 3.6.1) starting up.
+  11.6 12 | 2018-03-22T10:02:30+0000 [twisted.scripts._twistd_unix.UnixAppLogger#info] reactor class: twisted.internet.epollreactor.EPollReactor.
+  11.8 TL | [20] Running: (['ssh', '-F', '/dev/null', '-q', '-oStrictHostKeyChecking=no', '-oUserKnownHostsFile=/dev/null', '-p', '44059', 'telepresence@localhost', '/bin/true'],)...
+  11.9 TL | [20] exit 255.
+  12.0 13 | Forwarding from 127.0.0.1:44059 -> 8022
+  12.0 13 | Forwarding from [::1]:44059 -> 8022
+  12.1 TL | [21] Running: (['ssh', '-F', '/dev/null', '-q', '-oStrictHostKeyChecking=no', '-oUserKnownHostsFile=/dev/null', '-p', '44059', 'telepresence@localhost', '/bin/true'],)...
+  12.1 13 | Handling connection for 44059
+  13.6 TL | [21] ran.
+  13.6 TL | [22] Launching: (['ssh', '-N', '-oServerAliveInterval=1', '-oServerAliveCountMax=10', '-F', '/dev/null', '-q', '-oStrictHostKeyChecking=no', '-oUserKnownHostsFile=/dev/null', '-p', '44059', 'telepresence@localhost', '-R', '*:10382:127.0.0.1:10382'],)...
+  13.7 TL | [23] Capturing: (['kubectl', '--context', 'gke', '--namespace', 'default', 'exec', 'doubler-75958f-zv4z2', '--container', 'main', 'env'],)...
+  13.7 13 | Handling connection for 44059
+  15.4 TL | [23] captured.
+  15.4 TL | [24] Running: (['sshfs', '-p', '44059', '-F', '/dev/null', '-o', 'StrictHostKeyChecking=no', '-o', 'UserKnownHostsFile=/dev/null', 'telepresence@localhost:/', '/tmp/tmpdaopp9e6'],)...
+  15.4 13 | Handling connection for 44059
+  16.8 TL | [24] ran.
+  16.8 TL | [25] Capturing: (['kubectl', '--context', 'gke', '--namespace', 'default', 'exec', '--container=main', 'doubler-75958f-zv4z2', '--', 'python3', '-c', '\nimport socket, sys, json\n\nresult = []\nfor host in sys.argv[1:]:\n    result.append(socket.gethostbyname(host))\nsys.stdout.write(json.dumps(result))\nsys.stdout.flush()\n'],)...
+  18.8 TL | [25] captured.
+  18.8 TL | [26] Capturing: (['kubectl', 'get', 'nodes', '-o', 'json'],)...
+  19.6 TL | [26] captured.
+  19.6 TL | [27] Capturing: (['kubectl', 'get', 'services', '-o', 'json'],)...
+  20.3 TL | [27] captured.
+  20.3 TL | [28] Running: (['kubectl', 'create', 'service', 'clusterip', 'telepresence-1521712961-617365-12184', '--tcp=3000'],)...
+  20.9 28 | service "telepresence-1521712961-617365-12184" created
+  20.9 TL | [28] ran.
+  20.9 TL | [29] Running: (['kubectl', 'create', 'service', 'clusterip', 'telepresence-1521712962-308977-12184', '--tcp=3000'],)...
+  21.6 29 | service "telepresence-1521712962-308977-12184" created
+  21.6 TL | [29] ran.
+  21.6 TL | [30] Running: (['kubectl', 'create', 'service', 'clusterip', 'telepresence-1521712963-0021744-12184', '--tcp=3000'],)...
+  22.2 30 | service "telepresence-1521712963-0021744-12184" created
+  22.2 TL | [30] ran.
+  22.2 TL | [31] Running: (['kubectl', 'create', 'service', 'clusterip', 'telepresence-1521712963-5860713-12184', '--tcp=3000'],)...
+  22.8 31 | service "telepresence-1521712963-5860713-12184" created
+  22.8 TL | [31] ran.
+  22.8 TL | [32] Running: (['kubectl', 'create', 'service', 'clusterip', 'telepresence-1521712964-1630337-12184', '--tcp=3000'],)...
+  23.4 32 | service "telepresence-1521712964-1630337-12184" created
+  23.4 TL | [32] ran.
+  23.4 TL | [33] Running: (['kubectl', 'create', 'service', 'clusterip', 'telepresence-1521712964-7553027-12184', '--tcp=3000'],)...
+  24.0 33 | service "telepresence-1521712964-7553027-12184" created
+  24.0 TL | [33] ran.
+  24.0 TL | [34] Capturing: (['kubectl', 'get', 'services', '-o', 'json'],)...
+  24.5 TL | [34] captured.
+  24.5 TL | [35] Running: (['kubectl', 'delete', 'service', 'telepresence-1521712961-617365-12184'],)...
+  25.3 35 | service "telepresence-1521712961-617365-12184" deleted
+  25.3 TL | [35] ran.
+  25.3 TL | [36] Running: (['kubectl', 'delete', 'service', 'telepresence-1521712962-308977-12184'],)...
+  26.1 36 | service "telepresence-1521712962-308977-12184" deleted
+  26.1 TL | [36] ran.
+  26.1 TL | [37] Running: (['kubectl', 'delete', 'service', 'telepresence-1521712963-0021744-12184'],)...
+  26.9 37 | service "telepresence-1521712963-0021744-12184" deleted
+  26.9 TL | [37] ran.
+  26.9 TL | [38] Running: (['kubectl', 'delete', 'service', 'telepresence-1521712963-5860713-12184'],)...
+  27.8 38 | service "telepresence-1521712963-5860713-12184" deleted
+  27.8 TL | [38] ran.
+  27.8 TL | [39] Running: (['kubectl', 'delete', 'service', 'telepresence-1521712964-1630337-12184'],)...
+  28.6 39 | service "telepresence-1521712964-1630337-12184" deleted
+  28.6 TL | [39] ran.
+  28.6 TL | [40] Running: (['kubectl', 'delete', 'service', 'telepresence-1521712964-7553027-12184'],)...
+  29.3 40 | service "telepresence-1521712964-7553027-12184" deleted
+  29.3 TL | [40] ran.
+  29.3 TL | [41] Launching: (['sshuttle-telepresence', '-v', '--dns', '--method', 'nat', '-e', 'ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -F /dev/null', '--to-ns', '127.0.0.1:9053', '-r', 'telepresence@localhost:44059', '10.35.240.0/20', '10.32.1.0/24'],)...
+  29.3 TL | [42] Capturing: (['python3', '-c', "import socket; socket.gethostbyname('hellotelepresence0')"],)...
+  29.4 41 | Starting sshuttle proxy.
+  29.5 41 | firewall manager: Starting firewall with Python version 3.5.2
+  29.5 41 | firewall manager: ready method name nat.
+  29.5 41 | IPv6 enabled: False
+  29.5 41 | UDP enabled: False
+  29.5 41 | DNS enabled: True
+  29.5 41 | TCP redirector listening on ('127.0.0.1', 12300).
+  29.5 41 | DNS listening on ('127.0.0.1', 12300).
+  29.5 41 | Starting client with Python version 3.5.2
+  29.5 41 | c : connecting to server...
+  29.5 13 | Handling connection for 44059
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+socket.gaierror: [Errno -2] Name or service not known
+  29.6 TL | [43] Capturing: (['python3', '-c', "import socket; socket.gethostbyname('hellotelepresence1')"],)...
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+socket.gaierror: [Errno -2] Name or service not known
+  29.9 TL | [44] Capturing: (['python3', '-c', "import socket; socket.gethostbyname('hellotelepresence2')"],)...
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+socket.gaierror: [Errno -2] Name or service not known
+  30.0 41 | Warning: Permanently added '[localhost]:44059' (ECDSA) to the list of known hosts.
+  30.1 TL | [45] Capturing: (['python3', '-c', "import socket; socket.gethostbyname('hellotelepresence3')"],)...
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+socket.gaierror: [Errno -2] Name or service not known
+  30.3 TL | [46] Capturing: (['python3', '-c', "import socket; socket.gethostbyname('hellotelepresence4')"],)...
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+socket.gaierror: [Errno -2] Name or service not known
+  30.5 TL | [47] Capturing: (['python3', '-c', "import socket; socket.gethostbyname('hellotelepresence5')"],)...
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+socket.gaierror: [Errno -2] Name or service not known
+  30.7 TL | [48] Capturing: (['python3', '-c', "import socket; socket.gethostbyname('hellotelepresence6')"],)...
+  30.8 41 | Starting server with Python version 3.6.1
+  30.8 41 |  s: latency control setting = True
+  30.8 41 |  s: available routes:
+  30.8 41 |  s:   2/10.32.1.0/24
+  30.8 41 | c : Connected.
+  30.8 41 | firewall manager: setting up.
+  30.8 41 | >> iptables -t nat -N sshuttle-12300
+  30.8 41 | >> iptables -t nat -F sshuttle-12300
+  30.8 41 | >> iptables -t nat -I OUTPUT 1 -j sshuttle-12300
+  30.8 41 | >> iptables -t nat -I PREROUTING 1 -j sshuttle-12300
+  30.8 41 | >> iptables -t nat -A sshuttle-12300 -j RETURN --dest 127.0.0.1/32 -p tcp
+  30.8 41 | >> iptables -t nat -A sshuttle-12300 -j REDIRECT --dest 10.32.1.0/24 -p tcp --to-ports 12300 -m ttl ! --ttl 42
+  30.8 41 | >> iptables -t nat -A sshuttle-12300 -j REDIRECT --dest 10.35.240.0/20 -p tcp --to-ports 12300 -m ttl ! --ttl 42
+  30.8 41 | >> iptables -t nat -A sshuttle-12300 -j REDIRECT --dest 127.0.1.1/32 -p udp --dport 53 --to-ports 12300 -m ttl ! --ttl 42
+  30.8 41 | >> iptables -t nat -A sshuttle-12300 -j REDIRECT --dest 224.0.0.252/32 -p udp --dport 5355 --to-ports 12300 -m ttl ! --ttl 42
+  30.8 41 | conntrack v1.4.3 (conntrack-tools): 0 flow entries have been deleted.
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+socket.gaierror: [Errno -2] Name or service not known
+  30.9 TL | [49] Capturing: (['python3', '-c', "import socket; socket.gethostbyname('hellotelepresence7')"],)...
+  30.9 41 | c : DNS request from ('127.0.0.1', 48611) to None: 36 bytes
+  31.1 12 | 2018-03-22T10:02:52+0000 [stdout#info] Set DNS suffix we filter out to: []
+  31.1 12 | 2018-03-22T10:02:52+0000 [stdout#info] Result for b'hellotelepresence7' is ['127.0.0.1']
+  31.1 TL | [49] captured.
+  32.1 TL | [50] Capturing: (['python3', '-c', "import socket; socket.gethostbyname('hellotelepresence8')"],)...
+  32.1 41 | c : DNS request from ('127.0.0.1', 57291) to None: 36 bytes
+  32.3 12 | 2018-03-22T10:02:53+0000 [stdout#info] Set DNS suffix we filter out to: []
+  32.3 12 | 2018-03-22T10:02:53+0000 [stdout#info] Result for b'hellotelepresence8' is ['127.0.0.1']
+  32.3 TL | [50] captured.
+  32.3 TL | Everything launched. Waiting to exit...
+  35.6 41 | c : DNS request from ('127.0.0.1', 55792) to None: 27 bytes
+  35.7 12 | 2018-03-22T10:02:56+0000 [stdout#info] A query: b'gitter.im'
+  35.7 12 | 2018-03-22T10:02:57+0000 [stdout#info] Result for b'gitter.im' is ['52.70.52.152', '34.237.203.41']
+  36.9 41 | c : DNS request from ('127.0.0.1', 60041) to None: 49 bytes
+  37.0 12 | 2018-03-22T10:02:58+0000 [stdout#info] A query: b'lp-push-server-789.lastpass.com'
+  37.1 12 | 2018-03-22T10:02:58+0000 [stdout#info] Result for b'lp-push-server-789.lastpass.com' is ['192.241.191.66']
+  47.1 41 | c : DNS request from ('127.0.0.1', 49019) to None: 36 bytes
+  47.1 41 | c : DNS request from ('127.0.0.1', 49019) to None: 36 bytes
+  47.2 12 | 2018-03-22T10:03:08+0000 [stdout#info] A query: b'stream.twitter.com'
+  47.2 12 | 2018-03-22T10:03:08+0000 [stdout#info] AAAA query, sending back A instead: b'stream.twitter.com'
+  47.2 12 | 2018-03-22T10:03:08+0000 [stdout#info] A query: b'stream.twitter.com'
+  47.2 12 | 2018-03-22T10:03:08+0000 [stdout#info] Result for b'stream.twitter.com' is ['199.59.148.138']
+  47.2 12 | 2018-03-22T10:03:08+0000 [stdout#info] Result for b'stream.twitter.com' is ['199.59.148.138']
+ 105.1 41 | c : DNS request from ('127.0.0.1', 49690) to None: 28 bytes
+ 105.1 41 | c : DNS request from ('127.0.0.1', 49690) to None: 28 bytes
+ 105.3 12 | 2018-03-22T10:04:06+0000 [stdout#info] A query: b'github.com'
+ 105.3 12 | 2018-03-22T10:04:06+0000 [stdout#info] AAAA query, sending back A instead: b'github.com'
+ 105.3 12 | 2018-03-22T10:04:06+0000 [stdout#info] A query: b'github.com'
+ 105.3 12 | 2018-03-22T10:04:06+0000 [stdout#info] Result for b'github.com' is ['192.30.253.113', '192.30.253.112']
+ 105.3 12 | 2018-03-22T10:04:06+0000 [stdout#info] Result for b'github.com' is ['192.30.255.112', '192.30.255.113']
+ 115.6 41 | c : DNS request from ('127.0.0.1', 33571) to None: 34 bytes
+ 115.7 12 | 2018-03-22T10:04:17+0000 [stdout#info] A query: b'bolt.dropbox.com'
+ 115.8 12 | 2018-03-22T10:04:17+0000 [stdout#info] Result for b'bolt.dropbox.com' is ['162.125.18.133']
+ 115.8 41 | c : DNS request from ('127.0.0.1', 47772) to None: 34 bytes
+ 115.9 12 | 2018-03-22T10:04:17+0000 [stdout#info] AAAA query, sending back A instead: b'bolt.dropbox.com'
+ 115.9 12 | 2018-03-22T10:04:17+0000 [stdout#info] A query: b'bolt.dropbox.com'
+ 115.9 12 | 2018-03-22T10:04:17+0000 [stdout#info] Result for b'bolt.dropbox.com' is ['162.125.18.133']
+ 117.4 41 | c : DNS request from ('127.0.0.1', 51481) to None: 28 bytes
+ 117.4 41 | c : DNS request from ('127.0.0.1', 51481) to None: 28 bytes
+ 117.6 12 | 2018-03-22T10:04:18+0000 [stdout#info] A query: b'github.com'
+ 117.6 12 | 2018-03-22T10:04:18+0000 [stdout#info] AAAA query, sending back A instead: b'github.com'
+ 117.6 12 | 2018-03-22T10:04:18+0000 [stdout#info] A query: b'github.com'
+ 117.6 12 | 2018-03-22T10:04:18+0000 [stdout#info] Result for b'github.com' is ['192.30.255.113', '192.30.255.112']
+ 117.6 12 | 2018-03-22T10:04:18+0000 [stdout#info] Result for b'github.com' is ['192.30.255.112', '192.30.255.113']
+ 194.4 41 | c : DNS request from ('127.0.0.1', 57937) to None: 37 bytes
+ 194.6 12 | 2018-03-22T10:05:35+0000 [stdout#info] A query: b'clients4.google.com'
+ 194.6 12 | 2018-03-22T10:05:35+0000 [stdout#info] Result for b'clients4.google.com' is ['74.125.126.101', '74.125.126.113', '74.125.126.139', '74.125.126.100', '74.125.126.138', '74.125.126.102']
+ 209.3 41 | c : DNS request from ('127.0.0.1', 39242) to None: 41 bytes
+ 209.4 12 | 2018-03-22T10:05:50+0000 [stdout#info] A query: b'pollserver.lastpass.com'
+ 209.5 12 | 2018-03-22T10:05:50+0000 [stdout#info] Result for b'pollserver.lastpass.com' is ['104.106.25.36']
+ 233.4 41 | c : DNS request from ('127.0.0.1', 36933) to None: 33 bytes
+ 233.6 12 | 2018-03-22T10:06:14+0000 [stdout#info] A query: b'mail.google.com'
+ 233.6 12 | 2018-03-22T10:06:14+0000 [stdout#info] Result for b'mail.google.com' is ['74.125.126.83', '74.125.126.17', '74.125.126.18', '74.125.126.19']
+ 235.1 41 | c : DNS request from ('127.0.0.1', 45716) to None: 27 bytes
+ 235.3 12 | 2018-03-22T10:06:16+0000 [stdout#info] A query: b'gitter.im'
+ 235.3 12 | 2018-03-22T10:06:16+0000 [stdout#info] Result for b'gitter.im' is ['34.237.203.41', '52.70.52.152']
+ 237.9 41 | c : DNS request from ('127.0.0.1', 59796) to None: 38 bytes
+ 238.0 12 | 2018-03-22T10:06:19+0000 [stdout#info] A query: b'avatars-03.gitter.im'
+ 238.2 12 | 2018-03-22T10:06:19+0000 [stdout#info] Result for b'avatars-03.gitter.im' is ['13.33.164.79', '13.33.164.181', '13.33.164.234', '13.33.164.150', '13.33.164.231', '13.33.164.9', '13.33.164.222', '13.33.164.39']
+ 238.3 41 | c : DNS request from ('127.0.0.1', 36124) to None: 48 bytes
+ 238.3 41 | c : DNS request from ('127.0.0.1', 43520) to None: 33 bytes
+ 238.3 41 | c : DNS request from ('127.0.0.1', 34013) to None: 48 bytes
+ 238.3 41 | c : DNS request from ('127.0.0.1', 42911) to None: 48 bytes
+ 238.4 12 | 2018-03-22T10:06:19+0000 [stdout#info] A query: b'avatars1.githubusercontent.com'
+ 238.4 12 | 2018-03-22T10:06:19+0000 [stdout#info] A query: b'cdn01.gitter.im'
+ 238.4 12 | 2018-03-22T10:06:19+0000 [stdout#info] A query: b'avatars0.githubusercontent.com'
+ 238.4 12 | 2018-03-22T10:06:19+0000 [stdout#info] A query: b'avatars2.githubusercontent.com'
+ 238.4 12 | 2018-03-22T10:06:19+0000 [stdout#info] Result for b'avatars0.githubusercontent.com' is ['151.101.192.133', '151.101.128.133', '151.101.64.133', '151.101.0.133']
+ 238.5 12 | 2018-03-22T10:06:19+0000 [stdout#info] Result for b'avatars1.githubusercontent.com' is ['151.101.192.133', '151.101.128.133', '151.101.64.133', '151.101.0.133']
+ 238.5 12 | 2018-03-22T10:06:19+0000 [stdout#info] Result for b'avatars2.githubusercontent.com' is ['151.101.192.133', '151.101.128.133', '151.101.64.133', '151.101.0.133']
+ 238.6 12 | 2018-03-22T10:06:19+0000 [stdout#info] Result for b'cdn01.gitter.im' is ['13.33.164.29', '13.33.164.80', '13.33.164.35', '13.33.164.206', '13.33.164.120', '13.33.164.71', '13.33.164.85', '13.33.164.39']
+ 239.7 41 | c : DNS request from ('127.0.0.1', 36213) to None: 33 bytes
+ 239.9 12 | 2018-03-22T10:06:21+0000 [stdout#info] A query: b'files.gitter.im'
+ 239.9 12 | 2018-03-22T10:06:21+0000 [stdout#info] Result for b'files.gitter.im' is ['52.84.11.115', '52.84.11.212', '52.84.11.52', '52.84.11.36', '52.84.11.60', '52.84.11.46', '52.84.11.74', '52.84.11.171']
+ 267.6 41 | c : DNS request from ('127.0.0.1', 38768) to None: 37 bytes
+ 267.7 12 | 2018-03-22T10:06:49+0000 [stdout#info] A query: b'clients6.google.com'
+ 267.7 12 | 2018-03-22T10:06:49+0000 [stdout#info] Result for b'clients6.google.com' is ['64.233.181.101', '64.233.181.113', '64.233.181.102', '64.233.181.138', '64.233.181.139', '64.233.181.100']
+ 275.7 41 | c : DNS request from ('127.0.0.1', 51372) to None: 37 bytes
+ 275.8 12 | 2018-03-22T10:06:57+0000 [stdout#info] A query: b'clients4.google.com'
+ 275.8 12 | 2018-03-22T10:06:57+0000 [stdout#info] Result for b'clients4.google.com' is ['74.125.126.101', '74.125.126.113', '74.125.126.139', '74.125.126.100', '74.125.126.138', '74.125.126.102']
+ 287.6 41 | c : DNS request from ('127.0.0.1', 56637) to None: 41 bytes
+ 287.7 12 | 2018-03-22T10:07:08+0000 [stdout#info] A query: b'pollserver.lastpass.com'
+ 287.7 12 | 2018-03-22T10:07:09+0000 [stdout#info] Result for b'pollserver.lastpass.com' is ['23.197.164.230']
+ 292.4 41 | c : DNS request from ('127.0.0.1', 58804) to None: 33 bytes
+ 292.6 12 | 2018-03-22T10:07:13+0000 [stdout#info] A query: b'play.google.com'
+ 292.6 12 | 2018-03-22T10:07:13+0000 [stdout#info] Result for b'play.google.com' is ['74.125.126.102', '74.125.126.100', '74.125.126.101', '74.125.126.138', '74.125.126.113', '74.125.126.139']
+ 297.5 41 | c : DNS request from ('127.0.0.1', 46607) to None: 53 bytes
+ 297.6 12 | 2018-03-22T10:07:18+0000 [stdout#info] A query: b'cloudconsole-pa.clients6.google.com'
+ 297.6 12 | 2018-03-22T10:07:18+0000 [stdout#info] Result for b'cloudconsole-pa.clients6.google.com' is ['108.177.112.95']
+ 322.7 41 | c : DNS request from ('127.0.0.1', 59748) to None: 45 bytes
+ 322.9 12 | 2018-03-22T10:07:44+0000 [stdout#info] A query: b'safebrowsing.googleapis.com'
+ 322.9 12 | 2018-03-22T10:07:44+0000 [stdout#info] Result for b'safebrowsing.googleapis.com' is ['74.125.126.95']
+ 323.0 41 | c : DNS request from ('127.0.0.1', 45176) to None: 45 bytes
+ 323.1 12 | 2018-03-22T10:07:44+0000 [stdout#info] A query: b'safebrowsing.googleapis.com'
+ 323.1 12 | 2018-03-22T10:07:44+0000 [stdout#info] Result for b'safebrowsing.googleapis.com' is ['74.125.126.95']
+ 355.4 41 | c : DNS request from ('127.0.0.1', 34066) to None: 27 bytes
+ 355.6 12 | 2018-03-22T10:08:16+0000 [stdout#info] A query: b'gitter.im'
+ 355.6 12 | 2018-03-22T10:08:16+0000 [stdout#info] Result for b'gitter.im' is ['52.70.52.152', '34.237.203.41']
+ 463.1 41 | c : DNS request from ('127.0.0.1', 46780) to None: 36 bytes
+ 463.1 41 | c : DNS request from ('127.0.0.1', 46780) to None: 36 bytes
+ 463.3 12 | 2018-03-22T10:10:04+0000 [stdout#info] A query: b'client.dropbox.com'
+ 463.3 12 | 2018-03-22T10:10:04+0000 [stdout#info] AAAA query, sending back A instead: b'client.dropbox.com'
+ 463.3 12 | 2018-03-22T10:10:04+0000 [stdout#info] A query: b'client.dropbox.com'
+ 463.3 12 | 2018-03-22T10:10:04+0000 [stdout#info] Result for b'client.dropbox.com' is ['162.125.8.3']
+ 463.3 12 | 2018-03-22T10:10:04+0000 [stdout#info] Result for b'client.dropbox.com' is ['162.125.8.3']
+ 464.1 41 | c : DNS request from ('127.0.0.1', 45672) to None: 34 bytes
+ 464.2 12 | 2018-03-22T10:10:05+0000 [stdout#info] A query: b'bolt.dropbox.com'
+ 464.2 12 | 2018-03-22T10:10:05+0000 [stdout#info] Result for b'bolt.dropbox.com' is ['162.125.18.133']
+ 464.2 41 | c : DNS request from ('127.0.0.1', 60316) to None: 34 bytes
+ 464.4 12 | 2018-03-22T10:10:05+0000 [stdout#info] AAAA query, sending back A instead: b'bolt.dropbox.com'
+ 464.4 12 | 2018-03-22T10:10:05+0000 [stdout#info] A query: b'bolt.dropbox.com'
+ 464.4 12 | 2018-03-22T10:10:05+0000 [stdout#info] Result for b'bolt.dropbox.com' is ['162.125.18.133']
+ 464.4 41 | c : DNS request from ('127.0.0.1', 51771) to None: 34 bytes
+ 464.5 12 | 2018-03-22T10:10:05+0000 [stdout#info] A query: b'bolt.dropbox.com'
+ 464.5 12 | 2018-03-22T10:10:05+0000 [stdout#info] Result for b'bolt.dropbox.com' is ['162.125.18.133']
+ 464.5 41 | c : DNS request from ('127.0.0.1', 51343) to None: 34 bytes
+ 464.6 12 | 2018-03-22T10:10:05+0000 [stdout#info] AAAA query, sending back A instead: b'bolt.dropbox.com'
+ 464.6 12 | 2018-03-22T10:10:05+0000 [stdout#info] A query: b'bolt.dropbox.com'
+ 464.6 12 | 2018-03-22T10:10:05+0000 [stdout#info] Result for b'bolt.dropbox.com' is ['162.125.18.133']
+ 495.7 41 | c : DNS request from ('127.0.0.1', 48961) to None: 31 bytes
+ 495.8 12 | 2018-03-22T10:10:37+0000 [stdout#info] A query: b'd.dropbox.com'
+ 495.8 12 | 2018-03-22T10:10:37+0000 [stdout#info] Result for b'd.dropbox.com' is ['162.125.33.7']
+ 495.8 41 | c : DNS request from ('127.0.0.1', 49115) to None: 31 bytes
+ 496.0 12 | 2018-03-22T10:10:37+0000 [stdout#info] AAAA query, sending back A instead: b'd.dropbox.com'
+ 496.0 12 | 2018-03-22T10:10:37+0000 [stdout#info] A query: b'd.dropbox.com'
+ 496.0 12 | 2018-03-22T10:10:37+0000 [stdout#info] Result for b'd.dropbox.com' is ['162.125.33.7']
+ 529.5 41 | c : DNS request from ('127.0.0.1', 54336) to None: 27 bytes
+ 529.7 12 | 2018-03-22T10:11:10+0000 [stdout#info] A query: b'gitter.im'
+ 529.7 12 | 2018-03-22T10:11:10+0000 [stdout#info] Result for b'gitter.im' is ['52.70.52.152', '34.237.203.41']
+ 535.4 41 | c : DNS request from ('127.0.0.1', 34569) to None: 33 bytes
+ 535.6 12 | 2018-03-22T10:11:16+0000 [stdout#info] A query: b'mail.google.com'
+ 535.6 12 | 2018-03-22T10:11:16+0000 [stdout#info] Result for b'mail.google.com' is ['209.85.234.83', '209.85.234.18', '209.85.234.17', '209.85.234.19']
+ 673.4 41 | c : DNS request from ('127.0.0.1', 35731) to None: 53 bytes
+ 673.6 12 | 2018-03-22T10:13:34+0000 [stdout#info] A query: b'cloudconsole-pa.clients6.google.com'
+ 673.6 12 | 2018-03-22T10:13:34+0000 [stdout#info] Result for b'cloudconsole-pa.clients6.google.com' is ['108.177.112.95']
+ 759.2 41 | c : DNS request from ('127.0.0.1', 54545) to None: 49 bytes
+ 759.3 12 | 2018-03-22T10:15:00+0000 [stdout#info] A query: b'lp-push-server-243.lastpass.com'
+ 759.3 12 | 2018-03-22T10:15:00+0000 [stdout#info] Result for b'lp-push-server-243.lastpass.com' is ['192.241.167.204']
+ 760.1 41 | c : DNS request from ('127.0.0.1', 49595) to None: 36 bytes
+ 760.1 41 | c : DNS request from ('127.0.0.1', 49595) to None: 36 bytes
+ 760.3 12 | 2018-03-22T10:15:01+0000 [stdout#info] A query: b'client.dropbox.com'
+ 760.3 12 | 2018-03-22T10:15:01+0000 [stdout#info] AAAA query, sending back A instead: b'client.dropbox.com'
+ 760.3 12 | 2018-03-22T10:15:01+0000 [stdout#info] A query: b'client.dropbox.com'
+ 760.3 12 | 2018-03-22T10:15:01+0000 [stdout#info] Result for b'client.dropbox.com' is ['162.125.7.3']
+ 760.3 12 | 2018-03-22T10:15:01+0000 [stdout#info] Result for b'client.dropbox.com' is ['162.125.7.3']
+ 761.7 41 | c : DNS request from ('127.0.0.1', 39981) to None: 38 bytes
+ 761.7 41 | c : DNS request from ('127.0.0.1', 39981) to None: 38 bytes
+ 761.8 41 | c : DNS request from ('127.0.0.1', 55277) to None: 38 bytes
+ 761.8 41 | c : DNS request from ('127.0.0.1', 55277) to None: 38 bytes
+ 761.9 12 | 2018-03-22T10:15:03+0000 [stdout#info] A query: b'dl-debug.dropbox.com'
+ 761.9 12 | 2018-03-22T10:15:03+0000 [stdout#info] AAAA query, sending back A instead: b'dl-debug.dropbox.com'
+ 761.9 12 | 2018-03-22T10:15:03+0000 [stdout#info] A query: b'dl-debug.dropbox.com'
+ 761.9 12 | 2018-03-22T10:15:03+0000 [stdout#info] A query: b'dl-debug.dropbox.com'
+ 761.9 12 | 2018-03-22T10:15:03+0000 [stdout#info] AAAA query, sending back A instead: b'dl-debug.dropbox.com'
+ 761.9 12 | 2018-03-22T10:15:03+0000 [stdout#info] A query: b'dl-debug.dropbox.com'
+ 761.9 12 | 2018-03-22T10:15:03+0000 [stdout#info] Result for b'dl-debug.dropbox.com' is ['52.7.182.237', '52.1.221.21', '52.20.75.192', '52.5.97.251', '52.207.110.148', '52.6.78.241', '52.20.239.22', '52.20.33.29']
+ 761.9 12 | 2018-03-22T10:15:03+0000 [stdout#info] Result for b'dl-debug.dropbox.com' is ['52.20.33.29', '52.7.182.237', '52.1.221.21', '52.20.75.192', '52.5.97.251', '52.207.110.148', '52.6.78.241', '52.20.239.22']
+ 761.9 12 | 2018-03-22T10:15:03+0000 [stdout#info] Result for b'dl-debug.dropbox.com' is ['34.197.172.44', '35.174.140.249', '34.202.250.235', '34.206.110.93', '34.232.224.128', '34.200.132.117', '34.195.247.186', '52.0.152.198']
+ 761.9 12 | 2018-03-22T10:15:03+0000 [stdout#info] Result for b'dl-debug.dropbox.com' is ['52.0.152.198', '34.197.172.44', '35.174.140.249', '34.202.250.235', '34.206.110.93', '34.232.224.128', '34.200.132.117', '34.195.247.186']
+ 818.5 41 | c : DNS request from ('127.0.0.1', 56229) to None: 32 bytes
+ 818.5 41 | c : DNS request from ('127.0.0.1', 47698) to None: 35 bytes
+ 818.6 12 | 2018-03-22T10:15:59+0000 [stdout#info] A query: b'slack-imgs.com'
+ 818.6 12 | 2018-03-22T10:15:59+0000 [stdout#info] A query: b'ca.slack-edge.com'
+ 818.7 12 | 2018-03-22T10:15:59+0000 [stdout#info] Result for b'ca.slack-edge.com' is ['151.101.192.106', '151.101.128.106', '151.101.64.106', '151.101.0.106']
+ 818.7 12 | 2018-03-22T10:15:59+0000 [stdout#info] Result for b'slack-imgs.com' is ['13.33.162.66']
+ 839.4 41 | c : DNS request from ('127.0.0.1', 43877) to None: 28 bytes
+ 839.6 12 | 2018-03-22T10:16:20+0000 [stdout#info] A query: b'google.com'
+ 839.6 12 | 2018-03-22T10:16:20+0000 [stdout#info] Result for b'google.com' is ['64.233.181.100', '64.233.181.138', '64.233.181.102', '64.233.181.101', '64.233.181.139', '64.233.181.113']
+ 955.5 41 | c : DNS request from ('127.0.0.1', 58967) to None: 27 bytes
+ 955.6 12 | 2018-03-22T10:18:16+0000 [stdout#info] A query: b'gitter.im'
+ 955.7 12 | 2018-03-22T10:18:16+0000 [stdout#info] Result for b'gitter.im' is ['52.70.52.152', '34.237.203.41']
+ 963.5 41 | c : DNS request from ('127.0.0.1', 54504) to None: 33 bytes
+ 963.6 12 | 2018-03-22T10:18:24+0000 [stdout#info] A query: b'play.google.com'
+ 963.6 12 | 2018-03-22T10:18:24+0000 [stdout#info] Result for b'play.google.com' is ['74.125.126.139', '74.125.126.138', '74.125.126.113', '74.125.126.102', '74.125.126.100', '74.125.126.101']
+1041.9 41 | c : DNS request from ('127.0.0.1', 42157) to None: 27 bytes
+1042.0 12 | 2018-03-22T10:19:43+0000 [stdout#info] A query: b'gitter.im'
+1042.1 12 | 2018-03-22T10:19:43+0000 [stdout#info] Result for b'gitter.im' is ['52.70.52.152', '34.237.203.41']
+1042.5 41 | c : DNS request from ('127.0.0.1', 43083) to None: 53 bytes
+1042.6 12 | 2018-03-22T10:19:43+0000 [stdout#info] A query: b'cloudconsole-pa.clients6.google.com'
+1042.6 12 | 2018-03-22T10:19:43+0000 [stdout#info] Result for b'cloudconsole-pa.clients6.google.com' is ['173.194.74.95']
+1109.3 41 | c : DNS request from ('127.0.0.1', 49102) to None: 41 bytes
+1109.4 12 | 2018-03-22T10:20:50+0000 [stdout#info] A query: b'pollserver.lastpass.com'
+1109.5 12 | 2018-03-22T10:20:50+0000 [stdout#info] Result for b'pollserver.lastpass.com' is ['104.106.25.36']
+1139.8 41 | c : DNS request from ('127.0.0.1', 45469) to None: 42 bytes
+1139.9 12 | 2018-03-22T10:21:21+0000 [stdout#info] A query: b'www.google-analytics.com'
+1139.9 12 | 2018-03-22T10:21:21+0000 [stdout#info] Result for b'www.google-analytics.com' is ['108.177.112.102', '108.177.112.100', '108.177.112.101', '108.177.112.139', '108.177.112.113', '108.177.112.138']
+1187.6 41 | c : DNS request from ('127.0.0.1', 38550) to None: 41 bytes
+1187.7 12 | 2018-03-22T10:22:08+0000 [stdout#info] A query: b'pollserver.lastpass.com'
+1187.8 12 | 2018-03-22T10:22:09+0000 [stdout#info] Result for b'pollserver.lastpass.com' is ['184.31.194.238']
+1208.7 41 | c : DNS request from ('127.0.0.1', 36697) to None: 47 bytes
+1208.8 12 | 2018-03-22T10:22:30+0000 [stdout#info] A query: b'clientservices.googleapis.com'
+1208.8 12 | 2018-03-22T10:22:30+0000 [stdout#info] Result for b'clientservices.googleapis.com' is ['64.233.181.94']
+1213.9 41 | c : DNS request from ('127.0.0.1', 40526) to None: 38 bytes
+1214.0 12 | 2018-03-22T10:22:35+0000 [stdout#info] A query: b'beacons.gcp.gvt2.com'
+1214.1 12 | 2018-03-22T10:22:35+0000 [stdout#info] Result for b'beacons.gcp.gvt2.com' is ['64.233.181.94']
+1259.0 41 | c : DNS request from ('127.0.0.1', 52820) to None: 36 bytes
+1259.1 12 | 2018-03-22T10:23:20+0000 [stdout#info] A query: b'www.googleapis.com'
+1259.1 12 | 2018-03-22T10:23:20+0000 [stdout#info] Result for b'www.googleapis.com' is ['74.125.129.95', '209.85.147.95', '74.125.124.95', '108.177.112.95']
+1260.5 41 | c : DNS request from ('127.0.0.1', 48937) to None: 27 bytes
+1260.6 12 | 2018-03-22T10:23:21+0000 [stdout#info] A query: b'gitter.im'
+1260.6 12 | 2018-03-22T10:23:21+0000 [stdout#info] Result for b'gitter.im' is ['34.237.203.41', '52.70.52.152']
+1320.6 41 | c : DNS request from ('127.0.0.1', 47560) to None: 44 bytes
+1320.8 12 | 2018-03-22T10:24:22+0000 [stdout#info] A query: b'android.clients.google.com'
+1321.0 41 | c : DNS request from ('127.0.0.1', 43610) to None: 28 bytes
+1321.4 12 | 2018-03-22T10:24:22+0000 [stdout#info] Result for b'android.clients.google.com' is ['74.125.70.100', '74.125.124.139', '74.125.124.138', '74.125.124.113', '74.125.124.102', '74.125.124.100', '74.125.124.101', '108.177.112.138', '108.177.112.139', '108.177.112.113', '108.177.112.102', '108.177.112.100', '108.177.112.101', '74.125.69.113', '74.125.69.101', '173.194.196.113']
+1321.4 12 | 2018-03-22T10:24:22+0000 [stdout#info] A query: b'google.com'
+1321.4 12 | 2018-03-22T10:24:22+0000 [stdout#info] Result for b'google.com' is ['209.85.145.100', '209.85.145.101', '209.85.145.102', '209.85.145.139', '209.85.145.138', '209.85.145.113']
+1321.4 41 | c : DNS request from ('127.0.0.1', 37882) to None: 33 bytes
+1321.6 12 | 2018-03-22T10:24:22+0000 [stdout#info] A query: b'mail.google.com'
+1321.6 12 | 2018-03-22T10:24:22+0000 [stdout#info] Result for b'mail.google.com' is ['108.177.112.18', '108.177.112.19', '108.177.112.83', '108.177.112.17']
+1427.4 41 | c : DNS request from ('127.0.0.1', 47421) to None: 53 bytes
+1427.6 12 | 2018-03-22T10:26:08+0000 [stdout#info] A query: b'cloudconsole-pa.clients6.google.com'
+1427.6 12 | 2018-03-22T10:26:08+0000 [stdout#info] Result for b'cloudconsole-pa.clients6.google.com' is ['74.125.202.95']
+1451.9 41 | c : DNS request from ('127.0.0.1', 43263) to None: 31 bytes
+1452.1 12 | 2018-03-22T10:26:33+0000 [stdout#info] A query: b'd.dropbox.com'
+1452.1 12 | 2018-03-22T10:26:33+0000 [stdout#info] Result for b'd.dropbox.com' is ['162.125.32.135']
+1452.1 41 | c : DNS request from ('127.0.0.1', 52611) to None: 31 bytes
+1452.2 12 | 2018-03-22T10:26:33+0000 [stdout#info] AAAA query, sending back A instead: b'd.dropbox.com'
+1452.2 12 | 2018-03-22T10:26:33+0000 [stdout#info] A query: b'd.dropbox.com'
+1452.2 12 | 2018-03-22T10:26:33+0000 [stdout#info] Result for b'd.dropbox.com' is ['162.125.32.135']
+1473.3 41 | c : DNS request from ('127.0.0.1', 55038) to None: 27 bytes
+1473.4 12 | 2018-03-22T10:26:54+0000 [stdout#info] A query: b'gitter.im'
+1473.4 12 | 2018-03-22T10:26:54+0000 [stdout#info] Result for b'gitter.im' is ['52.70.52.152', '34.237.203.41']
+1515.3 41 | c : DNS request from ('127.0.0.1', 56276) to None: 28 bytes
+1515.5 12 | 2018-03-22T10:27:36+0000 [stdout#info] A query: b'github.com'
+1515.5 12 | 2018-03-22T10:27:36+0000 [stdout#info] Result for b'github.com' is ['192.30.253.112', '192.30.253.113']
+1516.3 41 | c : DNS request from ('127.0.0.1', 44513) to None: 48 bytes
+1516.4 12 | 2018-03-22T10:27:37+0000 [stdout#info] A query: b'avatars2.githubusercontent.com'
+1516.4 12 | 2018-03-22T10:27:37+0000 [stdout#info] Result for b'avatars2.githubusercontent.com' is ['151.101.192.133', '151.101.128.133', '151.101.64.133', '151.101.0.133']
+1525.6 41 | c : DNS request from ('127.0.0.1', 43424) to None: 47 bytes
+1525.8 12 | 2018-03-22T10:27:47+0000 [stdout#info] A query: b'clientservices.googleapis.com'
+1525.8 12 | 2018-03-22T10:27:47+0000 [stdout#info] Result for b'clientservices.googleapis.com' is ['64.233.181.94']
+1540.7 41 | c : DNS request from ('127.0.0.1', 50879) to None: 37 bytes
+1540.8 12 | 2018-03-22T10:28:02+0000 [stdout#info] A query: b'clients4.google.com'
+1540.8 12 | 2018-03-22T10:28:02+0000 [stdout#info] Result for b'clients4.google.com' is ['74.125.126.138', '74.125.126.102', '74.125.126.100', '74.125.126.101', '74.125.126.139', '74.125.126.113']
+1565.5 41 | c : DNS request from ('127.0.0.1', 47906) to None: 33 bytes
+1565.6 12 | 2018-03-22T10:28:26+0000 [stdout#info] A query: b'play.google.com'
+1565.6 12 | 2018-03-22T10:28:26+0000 [stdout#info] Result for b'play.google.com' is ['108.177.120.138', '108.177.120.101', '108.177.120.113', '108.177.120.102', '108.177.120.100', '108.177.120.139']
+1681.6 41 | c : DNS request from ('127.0.0.1', 33365) to None: 37 bytes
+1681.8 12 | 2018-03-22T10:30:23+0000 [stdout#info] A query: b'clients4.google.com'
+1681.8 12 | 2018-03-22T10:30:23+0000 [stdout#info] Result for b'clients4.google.com' is ['64.233.181.113', '64.233.181.102', '64.233.181.139', '64.233.181.100', '64.233.181.138', '64.233.181.101']
+1746.4 41 | c : DNS request from ('127.0.0.1', 33431) to None: 27 bytes
+1746.6 12 | 2018-03-22T10:31:27+0000 [stdout#info] A query: b'slack.com'
+1746.6 12 | 2018-03-22T10:31:27+0000 [stdout#info] Result for b'slack.com' is ['13.33.164.32']
+1774.5 41 | c : DNS request from ('127.0.0.1', 47169) to None: 34 bytes
+1774.5 41 | c : DNS request from ('127.0.0.1', 43692) to None: 40 bytes
+1774.5 41 | c : DNS request from ('127.0.0.1', 45562) to None: 33 bytes
+1774.5 41 | c : DNS request from ('127.0.0.1', 39263) to None: 33 bytes
+1774.5 41 | c : DNS request from ('127.0.0.1', 35227) to None: 43 bytes
+1774.5 41 | c : DNS request from ('127.0.0.1', 50015) to None: 32 bytes
+1774.6 12 | 2018-03-22T10:31:55+0000 [stdout#info] A query: b'www.google.co.uk'
+1774.6 12 | 2018-03-22T10:31:55+0000 [stdout#info] A query: b'adservice.google.co.uk'
+1774.6 12 | 2018-03-22T10:31:55+0000 [stdout#info] A query: b'apis.google.com'
+1774.6 12 | 2018-03-22T10:31:55+0000 [stdout#info] A query: b'id.google.co.uk'
+1774.6 12 | 2018-03-22T10:31:55+0000 [stdout#info] A query: b'lh3.googleusercontent.com'
+1774.6 12 | 2018-03-22T10:31:55+0000 [stdout#info] A query: b'ogs.google.com'
+1774.6 12 | 2018-03-22T10:31:55+0000 [stdout#info] Result for b'apis.google.com' is ['108.177.120.113', '108.177.120.138', '108.177.120.101', '108.177.120.139', '108.177.120.102', '108.177.120.100']
+1774.6 12 | 2018-03-22T10:31:55+0000 [stdout#info] Result for b'id.google.co.uk' is ['108.177.121.94']
+1774.6 12 | 2018-03-22T10:31:55+0000 [stdout#info] Result for b'www.google.co.uk' is ['64.233.181.94']
+1774.6 41 | c : DNS request from ('127.0.0.1', 57264) to None: 32 bytes
+1774.6 41 | c : DNS request from ('127.0.0.1', 42594) to None: 33 bytes
+1774.6 41 | c : DNS request from ('127.0.0.1', 34423) to None: 33 bytes
+1774.6 12 | 2018-03-22T10:31:55+0000 [stdout#info] Result for b'lh3.googleusercontent.com' is ['108.177.112.132']
+1774.6 12 | 2018-03-22T10:31:55+0000 [stdout#info] Result for b'ogs.google.com' is ['64.233.181.100', '64.233.181.102', '64.233.181.139', '64.233.181.138', '64.233.181.101', '64.233.181.113']
+1774.6 12 | 2018-03-22T10:31:55+0000 [stdout#info] Result for b'adservice.google.co.uk' is ['108.177.112.156', '108.177.112.157', '108.177.112.155', '108.177.112.154']
+1774.7 12 | 2018-03-22T10:31:56+0000 [stdout#info] A query: b'www.google.com'
+1774.7 12 | 2018-03-22T10:31:56+0000 [stdout#info] A query: b'ssl.gstatic.com'
+1774.7 12 | 2018-03-22T10:31:56+0000 [stdout#info] A query: b'www.gstatic.com'
+1774.8 12 | 2018-03-22T10:31:56+0000 [stdout#info] Result for b'www.google.com' is ['108.177.120.105', '108.177.120.99', '108.177.120.103', '108.177.120.106', '108.177.120.147', '108.177.120.104']
+1774.8 12 | 2018-03-22T10:31:56+0000 [stdout#info] Result for b'www.gstatic.com' is ['74.125.124.94']
+1774.8 12 | 2018-03-22T10:31:56+0000 [stdout#info] Result for b'ssl.gstatic.com' is ['74.125.124.94']
+1780.6 41 | c : DNS request from ('127.0.0.1', 57443) to None: 35 bytes
+1780.7 12 | 2018-03-22T10:32:02+0000 [stdout#info] A query: b'fonts.gstatic.com'
+1780.7 12 | 2018-03-22T10:32:02+0000 [stdout#info] Result for b'fonts.gstatic.com' is ['108.177.120.94']
+1780.9 41 | c : DNS request from ('127.0.0.1', 41998) to None: 45 bytes
+1781.1 12 | 2018-03-22T10:32:02+0000 [stdout#info] A query: b'safebrowsing.googleapis.com'
+1781.1 12 | 2018-03-22T10:32:02+0000 [stdout#info] Result for b'safebrowsing.googleapis.com' is ['108.177.112.95']
+1781.2 41 | c : DNS request from ('127.0.0.1', 46079) to None: 45 bytes
+1781.3 12 | 2018-03-22T10:32:02+0000 [stdout#info] A query: b'safebrowsing.googleapis.com'
+1781.3 12 | 2018-03-22T10:32:02+0000 [stdout#info] Result for b'safebrowsing.googleapis.com' is ['108.177.112.95']
+1781.6 41 | c : DNS request from ('127.0.0.1', 60341) to None: 34 bytes
+1781.6 41 | c : DNS request from ('127.0.0.1', 57110) to None: 32 bytes
+1781.7 12 | 2018-03-22T10:32:03+0000 [stdout#info] A query: b'pivotal.okta.com'
+1781.7 12 | 2018-03-22T10:32:03+0000 [stdout#info] A query: b'login.okta.com'
+1781.8 12 | 2018-03-22T10:32:03+0000 [stdout#info] Result for b'pivotal.okta.com' is ['54.235.64.95', '54.235.64.100', '54.235.64.96', '50.19.225.214', '54.235.68.72', '54.235.64.102', '54.235.64.85', '54.235.68.73']
+1781.8 12 | 2018-03-22T10:32:03+0000 [stdout#info] Result for b'login.okta.com' is ['13.33.164.126', '13.33.164.193', '13.33.164.149', '13.33.164.192', '13.33.164.189', '13.33.164.180', '13.33.164.21', '13.33.164.133']
+1786.5 41 | c : DNS request from ('127.0.0.1', 59135) to None: 39 bytes
+1786.6 12 | 2018-03-22T10:32:07+0000 [stdout#info] A query: b'loglogin.lastpass.com'
+1786.7 12 | 2018-03-22T10:32:08+0000 [stdout#info] Result for b'loglogin.lastpass.com' is ['104.113.69.56']
+1789.5 41 | c : DNS request from ('127.0.0.1', 49110) to None: 30 bytes
+1789.5 41 | c : DNS request from ('127.0.0.1', 49762) to None: 35 bytes
+1789.6 12 | 2018-03-22T10:32:10+0000 [stdout#info] A query: b'springio.net'
+1789.6 12 | 2018-03-22T10:32:10+0000 [stdout#info] A query: b'2018.springio.net'
+1789.6 12 | 2018-03-22T10:32:10+0000 [stdout#info] Result for b'2018.springio.net' is ['51.254.201.7']
+1789.6 12 | 2018-03-22T10:32:10+0000 [stdout#info] Result for b'springio.net' is ['51.254.201.7']
+1789.8 41 | c : DNS request from ('127.0.0.1', 55356) to None: 37 bytes
+1789.8 41 | c : DNS request from ('127.0.0.1', 53662) to None: 42 bytes
+1789.8 41 | c : DNS request from ('127.0.0.1', 60228) to None: 38 bytes
+1789.9 12 | 2018-03-22T10:32:11+0000 [stdout#info] A query: b'ajax.googleapis.com'
+1789.9 12 | 2018-03-22T10:32:11+0000 [stdout#info] Result for b'ajax.googleapis.com' is ['64.233.181.95', '74.125.124.95', '108.177.112.95', '173.194.198.95', '74.125.126.95']
+1789.9 12 | 2018-03-22T10:32:11+0000 [stdout#info] A query: b'www.googletagmanager.com'
+1789.9 12 | 2018-03-22T10:32:11+0000 [stdout#info] A query: b'fonts.googleapis.com'
+1789.9 12 | 2018-03-22T10:32:11+0000 [stdout#info] Result for b'fonts.googleapis.com' is ['74.125.126.95']
+1789.9 12 | 2018-03-22T10:32:11+0000 [stdout#info] Result for b'www.googletagmanager.com' is ['108.177.120.97']
+1790.5 41 | c : DNS request from ('127.0.0.1', 40483) to None: 33 bytes
+1790.6 12 | 2018-03-22T10:32:11+0000 [stdout#info] A query: b'www.youtube.com'
+1790.6 12 | 2018-03-22T10:32:11+0000 [stdout#info] Result for b'www.youtube.com' is ['74.125.69.93', '74.125.69.91', '74.125.69.136', '173.194.196.190', '173.194.196.91', '209.85.234.91', '74.125.129.91', '74.125.202.136', '74.125.202.190', '173.194.192.93', '173.194.192.91', '173.194.74.91', '64.233.183.136', '108.177.120.91', '108.177.111.136', '74.125.70.190']
+1790.6 41 | c : DNS request from ('127.0.0.1', 51053) to None: 42 bytes
+1790.8 12 | 2018-03-22T10:32:12+0000 [stdout#info] A query: b'www.google-analytics.com'
+1790.8 12 | 2018-03-22T10:32:12+0000 [stdout#info] Result for b'www.google-analytics.com' is ['64.233.181.138', '64.233.181.101', '64.233.181.139', '64.233.181.100', '64.233.181.113', '64.233.181.102']
+1791.1 41 | c : DNS request from ('127.0.0.1', 50655) to None: 29 bytes
+1791.3 12 | 2018-03-22T10:32:12+0000 [stdout#info] A query: b's.ytimg.com'
+1791.3 12 | 2018-03-22T10:32:12+0000 [stdout#info] Result for b's.ytimg.com' is ['108.177.120.101', '108.177.120.139', '108.177.120.100', '108.177.120.102', '108.177.120.138', '108.177.120.113']
+1791.7 41 | c : DNS request from ('127.0.0.1', 60769) to None: 45 bytes
+1791.7 41 | c : DNS request from ('127.0.0.1', 49096) to None: 40 bytes
+1791.8 12 | 2018-03-22T10:32:13+0000 [stdout#info] A query: b'googleads.g.doubleclick.net'
+1791.8 12 | 2018-03-22T10:32:13+0000 [stdout#info] Result for b'googleads.g.doubleclick.net' is ['74.125.124.156', '74.125.124.155', '74.125.124.157', '74.125.124.154']
+1791.8 12 | 2018-03-22T10:32:13+0000 [stdout#info] A query: b'static.doubleclick.net'
+1791.8 12 | 2018-03-22T10:32:13+0000 [stdout#info] Result for b'static.doubleclick.net' is ['108.177.112.148', '108.177.112.149']
+1792.7 41 | c : DNS request from ('127.0.0.1', 57047) to None: 29 bytes
+1792.8 12 | 2018-03-22T10:32:14+0000 [stdout#info] A query: b'i.ytimg.com'
+1792.8 12 | 2018-03-22T10:32:14+0000 [stdout#info] Result for b'i.ytimg.com' is ['108.177.112.101', '108.177.112.113', '108.177.112.100', '108.177.112.139', '108.177.112.102', '108.177.112.138', '173.194.198.138', '74.125.69.101', '74.125.69.138', '74.125.126.101', '74.125.126.113', '209.85.200.113', '209.85.200.100', '209.85.145.101', '74.125.202.100', '173.194.74.102']
+1793.4 41 | c : DNS request from ('127.0.0.1', 36421) to None: 58 bytes
+1793.5 12 | 2018-03-22T10:32:14+0000 [stdout#info] A query: b'r8---sn-8pgbpohxqp5-aig6.googlevideo.com'
+1793.5 12 | 2018-03-22T10:32:14+0000 [stdout#info] Result for b'r8---sn-8pgbpohxqp5-aig6.googlevideo.com' is ['62.253.72.147']
+1793.6 41 | c : DNS request from ('127.0.0.1', 48310) to None: 50 bytes
+1793.7 12 | 2018-03-22T10:32:15+0000 [stdout#info] A query: b'r5---sn-aigl6n76.googlevideo.com'
+1793.7 12 | 2018-03-22T10:32:15+0000 [stdout#info] Result for b'r5---sn-aigl6n76.googlevideo.com' is ['173.194.5.203']
+1812.4 41 | c : DNS request from ('127.0.0.1', 54484) to None: 41 bytes
+1812.5 12 | 2018-03-22T10:32:33+0000 [stdout#info] A query: b'www.concursolutions.com'
+1812.6 12 | 2018-03-22T10:32:33+0000 [stdout#info] Result for b'www.concursolutions.com' is ['104.106.29.111']
+1812.7 41 | c : DNS request from ('127.0.0.1', 60432) to None: 41 bytes
+1812.8 12 | 2018-03-22T10:32:34+0000 [stdout#info] A query: b'www.concursolutions.com'
+1812.8 12 | 2018-03-22T10:32:34+0000 [stdout#info] Result for b'www.concursolutions.com' is ['104.106.29.111']
+1815.0 41 | c : DNS request from ('127.0.0.1', 50521) to None: 41 bytes
+1815.2 12 | 2018-03-22T10:32:36+0000 [stdout#info] A query: b'stats.g.doubleclick.net'
+1815.4 41 | c : DNS request from ('127.0.0.1', 58281) to None: 50 bytes
+1815.7 12 | 2018-03-22T10:32:36+0000 [stdout#info] Result for b'stats.g.doubleclick.net' is ['108.177.120.156', '108.177.120.154', '108.177.120.155', '108.177.120.157']
+1815.7 12 | 2018-03-22T10:32:36+0000 [stdout#info] A query: b'r2---sn-25ge7nls.googlevideo.com'
+1815.7 12 | 2018-03-22T10:32:36+0000 [stdout#info] Result for b'r2---sn-25ge7nls.googlevideo.com' is ['74.125.105.104']
+1816.3 41 | c : DNS request from ('127.0.0.1', 39584) to None: 44 bytes
+1816.4 12 | 2018-03-22T10:32:37+0000 [stdout#info] A query: b'static.concursolutions.com'
+1816.6 12 | 2018-03-22T10:32:37+0000 [stdout#info] Result for b'static.concursolutions.com' is ['104.106.29.111']
+1817.4 41 | c : DNS request from ('127.0.0.1', 46069) to None: 48 bytes
+1817.4 41 | c : DNS request from ('127.0.0.1', 49736) to None: 41 bytes
+1817.5 12 | 2018-03-22T10:32:38+0000 [stdout#info] A query: b'www-us.api.concursolutions.com'
+1817.6 12 | 2018-03-22T10:32:38+0000 [stdout#info] A query: b'eum.concursolutions.com'
+1817.6 12 | 2018-03-22T10:32:38+0000 [stdout#info] Result for b'www-us.api.concursolutions.com' is ['104.113.75.49']
+1817.7 12 | 2018-03-22T10:32:38+0000 [stdout#info] Result for b'eum.concursolutions.com' is ['104.106.29.111']
+1818.7 41 | c : DNS request from ('127.0.0.1', 43687) to None: 47 bytes
+1818.8 12 | 2018-03-22T10:32:40+0000 [stdout#info] A query: b'd3f6xmy2of8mbx.cloudfront.net'
+1818.9 12 | 2018-03-22T10:32:40+0000 [stdout#info] Result for b'd3f6xmy2of8mbx.cloudfront.net' is ['52.84.7.195', '52.84.7.107', '52.84.7.79', '52.84.7.72', '52.84.7.188', '52.84.7.67', '52.84.7.178', '52.84.7.60']
+1837.4 41 | c : DNS request from ('127.0.0.1', 34317) to None: 31 bytes
+1837.4 41 | c : DNS request from ('127.0.0.1', 34317) to None: 31 bytes
+1837.5 12 | 2018-03-22T10:32:58+0000 [stdout#info] A query: b'd.dropbox.com'
+1837.5 12 | 2018-03-22T10:32:58+0000 [stdout#info] AAAA query, sending back A instead: b'd.dropbox.com'
+1837.5 12 | 2018-03-22T10:32:58+0000 [stdout#info] A query: b'd.dropbox.com'
+1837.6 12 | 2018-03-22T10:32:58+0000 [stdout#info] Result for b'd.dropbox.com' is ['162.125.33.7']
+1837.6 12 | 2018-03-22T10:32:58+0000 [stdout#info] Result for b'd.dropbox.com' is ['162.125.33.7']
+1837.8 41 | c : DNS request from ('127.0.0.1', 40620) to None: 34 bytes
+1838.0 12 | 2018-03-22T10:32:59+0000 [stdout#info] A query: b'www.google.co.uk'
+1838.0 12 | 2018-03-22T10:32:59+0000 [stdout#info] Result for b'www.google.co.uk' is ['64.233.181.94']
+1838.4 41 | c : DNS request from ('127.0.0.1', 56802) to None: 46 bytes
+1838.5 12 | 2018-03-22T10:32:59+0000 [stdout#info] A query: b'cesna-killswitch.dropbox.com'
+1838.5 12 | 2018-03-22T10:32:59+0000 [stdout#info] [Failure instance: Traceback: <class 'socket.gaierror'>: [Errno -2] Name does not resolve
+1838.5 12 | 2018-03-22T10:32:59+0000 [stdout#info] /usr/lib/python3.6/threading.py:916:_bootstrap_inner
+1838.5 12 | 2018-03-22T10:32:59+0000 [stdout#info] /usr/lib/python3.6/threading.py:864:run
+1838.5 12 | 2018-03-22T10:32:59+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/_threads/_threadworker.py:46:work
+1838.5 12 | 2018-03-22T10:32:59+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/_threads/_team.py:190:doWork
+1838.5 12 | 2018-03-22T10:32:59+0000 [stdout#info] --- <exception caught here> ---
+1838.5 12 | 2018-03-22T10:32:59+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/python/threadpool.py:250:inContext
+1838.5 12 | 2018-03-22T10:32:59+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/python/threadpool.py:266:<lambda>
+1838.5 12 | 2018-03-22T10:32:59+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/python/context.py:122:callWithContext
+1838.5 12 | 2018-03-22T10:32:59+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/python/context.py:85:callWithContext
+1838.5 12 | 2018-03-22T10:32:59+0000 [stdout#info] ./forwarder.py:31:resolve
+1838.5 12 | 2018-03-22T10:32:59+0000 [stdout#info] ]
+1838.5 41 | c : DNS request from ('127.0.0.1', 46218) to None: 46 bytes
+1838.7 12 | 2018-03-22T10:32:59+0000 [stdout#info] AAAA query, sending back A instead: b'cesna-killswitch.dropbox.com'
+1838.7 12 | 2018-03-22T10:32:59+0000 [stdout#info] A query: b'cesna-killswitch.dropbox.com'
+1838.7 12 | 2018-03-22T10:32:59+0000 [stdout#info] [Failure instance: Traceback: <class 'socket.gaierror'>: [Errno -2] Name does not resolve
+1838.7 12 | 2018-03-22T10:32:59+0000 [stdout#info] /usr/lib/python3.6/threading.py:916:_bootstrap_inner
+1838.7 12 | 2018-03-22T10:32:59+0000 [stdout#info] /usr/lib/python3.6/threading.py:864:run
+1838.7 12 | 2018-03-22T10:32:59+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/_threads/_threadworker.py:46:work
+1838.7 12 | 2018-03-22T10:32:59+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/_threads/_team.py:190:doWork
+1838.7 12 | 2018-03-22T10:32:59+0000 [stdout#info] --- <exception caught here> ---
+1838.7 12 | 2018-03-22T10:32:59+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/python/threadpool.py:250:inContext
+1838.7 12 | 2018-03-22T10:32:59+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/python/threadpool.py:266:<lambda>
+1838.7 12 | 2018-03-22T10:32:59+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/python/context.py:122:callWithContext
+1838.7 12 | 2018-03-22T10:32:59+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/python/context.py:85:callWithContext
+1838.7 12 | 2018-03-22T10:32:59+0000 [stdout#info] ./forwarder.py:31:resolve
+1838.7 12 | 2018-03-22T10:32:59+0000 [stdout#info] ]
+1838.7 41 | c : DNS request from ('127.0.0.1', 57136) to None: 46 bytes
+1838.8 12 | 2018-03-22T10:33:00+0000 [stdout#info] A query: b'cesna-killswitch.dropbox.com'
+1838.8 12 | 2018-03-22T10:33:00+0000 [stdout#info] [Failure instance: Traceback: <class 'socket.gaierror'>: [Errno -2] Name does not resolve
+1838.8 12 | 2018-03-22T10:33:00+0000 [stdout#info] /usr/lib/python3.6/threading.py:916:_bootstrap_inner
+1838.8 12 | 2018-03-22T10:33:00+0000 [stdout#info] /usr/lib/python3.6/threading.py:864:run
+1838.8 12 | 2018-03-22T10:33:00+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/_threads/_threadworker.py:46:work
+1838.8 12 | 2018-03-22T10:33:00+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/_threads/_team.py:190:doWork
+1838.8 12 | 2018-03-22T10:33:00+0000 [stdout#info] --- <exception caught here> ---
+1838.8 12 | 2018-03-22T10:33:00+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/python/threadpool.py:250:inContext
+1838.8 12 | 2018-03-22T10:33:00+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/python/threadpool.py:266:<lambda>
+1838.8 12 | 2018-03-22T10:33:00+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/python/context.py:122:callWithContext
+1838.8 12 | 2018-03-22T10:33:00+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/python/context.py:85:callWithContext
+1838.8 12 | 2018-03-22T10:33:00+0000 [stdout#info] ./forwarder.py:31:resolve
+1838.8 12 | 2018-03-22T10:33:00+0000 [stdout#info] ]
+1838.8 41 | c : DNS request from ('127.0.0.1', 52287) to None: 46 bytes
+1838.9 12 | 2018-03-22T10:33:00+0000 [stdout#info] AAAA query, sending back A instead: b'cesna-killswitch.dropbox.com'
+1838.9 12 | 2018-03-22T10:33:00+0000 [stdout#info] A query: b'cesna-killswitch.dropbox.com'
+1838.9 12 | 2018-03-22T10:33:00+0000 [stdout#info] [Failure instance: Traceback: <class 'socket.gaierror'>: [Errno -2] Name does not resolve
+1838.9 12 | 2018-03-22T10:33:00+0000 [stdout#info] /usr/lib/python3.6/threading.py:916:_bootstrap_inner
+1838.9 12 | 2018-03-22T10:33:00+0000 [stdout#info] /usr/lib/python3.6/threading.py:864:run
+1838.9 12 | 2018-03-22T10:33:00+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/_threads/_threadworker.py:46:work
+1838.9 12 | 2018-03-22T10:33:00+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/_threads/_team.py:190:doWork
+1838.9 12 | 2018-03-22T10:33:00+0000 [stdout#info] --- <exception caught here> ---
+1838.9 12 | 2018-03-22T10:33:00+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/python/threadpool.py:250:inContext
+1838.9 12 | 2018-03-22T10:33:00+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/python/threadpool.py:266:<lambda>
+1838.9 12 | 2018-03-22T10:33:00+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/python/context.py:122:callWithContext
+1838.9 12 | 2018-03-22T10:33:00+0000 [stdout#info] /usr/lib/python3.6/site-packages/twisted/python/context.py:85:callWithContext
+1838.9 12 | 2018-03-22T10:33:00+0000 [stdout#info] ./forwarder.py:31:resolve
+1838.9 12 | 2018-03-22T10:33:00+0000 [stdout#info] ]
+1863.7 41 | c : DNS request from ('127.0.0.1', 32881) to None: 38 bytes
+1863.9 12 | 2018-03-22T10:33:25+0000 [stdout#info] A query: b'beacons.gcp.gvt2.com'
+1863.9 12 | 2018-03-22T10:33:25+0000 [stdout#info] Result for b'beacons.gcp.gvt2.com' is ['173.194.198.94']
+1911.9 41 | c : DNS request from ('127.0.0.1', 33998) to None: 37 bytes
+1912.0 12 | 2018-03-22T10:34:13+0000 [stdout#info] A query: b'clients1.google.com'
+1912.0 12 | 2018-03-22T10:34:13+0000 [stdout#info] Result for b'clients1.google.com' is ['108.177.120.113', '108.177.120.100', '108.177.120.101', '108.177.120.138', '108.177.120.139', '108.177.120.102']
+1919.3 41 | c : DNS request from ('127.0.0.1', 48679) to None: 48 bytes
+1919.5 12 | 2018-03-22T10:34:20+0000 [stdout#info] A query: b'www-us.api.concursolutions.com'
+1919.7 12 | 2018-03-22T10:34:20+0000 [stdout#info] Result for b'www-us.api.concursolutions.com' is ['104.113.75.49']
+1924.4 41 | c : DNS request from ('127.0.0.1', 54283) to None: 33 bytes
+1924.5 41 | c : DNS request from ('127.0.0.1', 37516) to None: 35 bytes
+1924.5 12 | 2018-03-22T10:34:25+0000 [stdout#info] A query: b'www.easyjet.com'
+1924.6 12 | 2018-03-22T10:34:25+0000 [stdout#info] A query: b'beacons5.gvt3.com'
+1924.6 12 | 2018-03-22T10:34:25+0000 [stdout#info] Result for b'beacons5.gvt3.com' is ['104.237.191.1']
+1924.6 12 | 2018-03-22T10:34:25+0000 [stdout#info] Result for b'www.easyjet.com' is ['23.194.79.198']
+2009.3 41 | c : DNS request from ('127.0.0.1', 44319) to None: 41 bytes
+2009.5 12 | 2018-03-22T10:35:50+0000 [stdout#info] A query: b'pollserver.lastpass.com'
+2009.5 12 | 2018-03-22T10:35:50+0000 [stdout#info] Result for b'pollserver.lastpass.com' is ['104.106.25.36']
+2042.3 41 | c : DNS request from ('127.0.0.1', 58545) to None: 37 bytes
+2042.4 12 | 2018-03-22T10:36:23+0000 [stdout#info] A query: b'clients4.google.com'
+2042.4 12 | 2018-03-22T10:36:23+0000 [stdout#info] Result for b'clients4.google.com' is ['64.233.181.113', '64.233.181.101', '64.233.181.138', '64.233.181.139', '64.233.181.100', '64.233.181.102']
+2087.6 41 | c : DNS request from ('127.0.0.1', 48491) to None: 41 bytes
+2087.8 12 | 2018-03-22T10:37:09+0000 [stdout#info] A query: b'pollserver.lastpass.com'
+2087.8 12 | 2018-03-22T10:37:09+0000 [stdout#info] Result for b'pollserver.lastpass.com' is ['104.106.25.36']
+2136.4 41 | c : DNS request from ('127.0.0.1', 52908) to None: 53 bytes
+2136.6 12 | 2018-03-22T10:37:57+0000 [stdout#info] A query: b'cloudconsole-pa.clients6.google.com'
+2136.6 12 | 2018-03-22T10:37:57+0000 [stdout#info] Result for b'cloudconsole-pa.clients6.google.com' is ['74.125.124.95']
+2155.4 41 | c : DNS request from ('127.0.0.1', 48600) to None: 27 bytes
+2155.6 12 | 2018-03-22T10:38:16+0000 [stdout#info] A query: b'gitter.im'
+2155.6 12 | 2018-03-22T10:38:16+0000 [stdout#info] Result for b'gitter.im' is ['52.70.52.152', '34.237.203.41']
+2162.0 41 | c : DNS request from ('127.0.0.1', 38522) to None: 31 bytes
+2162.1 12 | 2018-03-22T10:38:23+0000 [stdout#info] A query: b'd.dropbox.com'
+2162.2 12 | 2018-03-22T10:38:23+0000 [stdout#info] Result for b'd.dropbox.com' is ['162.125.33.7']
+2162.2 41 | c : DNS request from ('127.0.0.1', 50921) to None: 31 bytes
+2162.3 12 | 2018-03-22T10:38:23+0000 [stdout#info] AAAA query, sending back A instead: b'd.dropbox.com'
+2162.3 12 | 2018-03-22T10:38:23+0000 [stdout#info] A query: b'd.dropbox.com'
+2162.3 12 | 2018-03-22T10:38:23+0000 [stdout#info] Result for b'd.dropbox.com' is ['162.125.33.7']
+2162.4 41 | c : DNS request from ('127.0.0.1', 32886) to None: 35 bytes
+2162.6 12 | 2018-03-22T10:38:23+0000 [stdout#info] A query: b'pivotal.slack.com'
+2162.6 12 | 2018-03-22T10:38:23+0000 [stdout#info] Result for b'pivotal.slack.com' is ['13.33.164.32']
+2163.3 41 | c : DNS request from ('127.0.0.1', 45440) to None: 35 bytes
+2163.4 12 | 2018-03-22T10:38:24+0000 [stdout#info] A query: b'ca.slack-edge.com'
+2163.4 12 | 2018-03-22T10:38:24+0000 [stdout#info] Result for b'ca.slack-edge.com' is ['151.101.192.106', '151.101.128.106', '151.101.64.106', '151.101.0.106']
+2175.6 41 | c : DNS request from ('127.0.0.1', 36428) to None: 32 bytes
+2175.6 41 | c : DNS request from ('127.0.0.1', 41325) to None: 40 bytes
+2175.7 12 | 2018-03-22T10:38:36+0000 [stdout#info] A query: b'slack-imgs.com'
+2175.7 12 | 2018-03-22T10:38:36+0000 [stdout#info] A query: b'avatars.slack-edge.com'
+2175.7 12 | 2018-03-22T10:38:37+0000 [stdout#info] Result for b'slack-imgs.com' is ['13.33.162.66']
+2175.7 12 | 2018-03-22T10:38:37+0000 [stdout#info] Result for b'avatars.slack-edge.com' is ['151.101.192.106', '151.101.128.106', '151.101.64.106', '151.101.0.106']
+2182.9 41 | c : DNS request from ('127.0.0.1', 46224) to None: 27 bytes
+2183.1 12 | 2018-03-22T10:38:44+0000 [stdout#info] A query: b'slack.com'
+2183.1 12 | 2018-03-22T10:38:44+0000 [stdout#info] Result for b'slack.com' is ['52.85.87.6']
+2216.4 41 | c : DNS request from ('127.0.0.1', 50563) to None: 38 bytes
+2216.6 12 | 2018-03-22T10:39:17+0000 [stdout#info] A query: b'dl-debug.dropbox.com'
+2216.6 12 | 2018-03-22T10:39:17+0000 [stdout#info] Result for b'dl-debug.dropbox.com' is ['52.87.83.235', '52.20.75.192', '52.7.182.237', '52.70.31.26', '52.207.110.148', '52.5.97.251', '52.6.78.241', '52.71.87.238']
+2216.6 41 | c : DNS request from ('127.0.0.1', 50563) to None: 38 bytes
+2216.7 12 | 2018-03-22T10:39:18+0000 [stdout#info] AAAA query, sending back A instead: b'dl-debug.dropbox.com'
+2216.7 12 | 2018-03-22T10:39:18+0000 [stdout#info] A query: b'dl-debug.dropbox.com'
+2216.7 12 | 2018-03-22T10:39:18+0000 [stdout#info] Result for b'dl-debug.dropbox.com' is ['52.6.78.241', '52.71.87.238', '52.87.83.235', '52.20.75.192', '52.7.182.237', '52.70.31.26', '52.207.110.148', '52.5.97.251']
+2238.1 41 | c : DNS request from ('127.0.0.1', 41448) to None: 27 bytes
+2238.2 12 | 2018-03-22T10:39:39+0000 [stdout#info] A query: b'gitter.im'
+2238.2 12 | 2018-03-22T10:39:39+0000 [stdout#info] Result for b'gitter.im' is ['52.70.52.152', '34.237.203.41']
+2240.2 41 | c : DNS request from ('127.0.0.1', 33861) to None: 48 bytes
+2240.2 41 | c : DNS request from ('127.0.0.1', 60618) to None: 48 bytes
+2240.2 41 | c : DNS request from ('127.0.0.1', 33877) to None: 48 bytes
+2240.3 12 | 2018-03-22T10:39:41+0000 [stdout#info] A query: b'avatars0.githubusercontent.com'
+2240.3 12 | 2018-03-22T10:39:41+0000 [stdout#info] A query: b'avatars1.githubusercontent.com'
+2240.3 12 | 2018-03-22T10:39:41+0000 [stdout#info] A query: b'avatars2.githubusercontent.com'
+2240.3 12 | 2018-03-22T10:39:41+0000 [stdout#info] Result for b'avatars1.githubusercontent.com' is ['151.101.0.133', '151.101.64.133', '151.101.128.133', '151.101.192.133']
+2240.3 12 | 2018-03-22T10:39:41+0000 [stdout#info] Result for b'avatars2.githubusercontent.com' is ['151.101.0.133', '151.101.64.133', '151.101.128.133', '151.101.192.133']
+2240.4 12 | 2018-03-22T10:39:41+0000 [stdout#info] Result for b'avatars0.githubusercontent.com' is ['151.101.192.133', '151.101.128.133', '151.101.64.133', '151.101.0.133']
+2243.3 41 | c : DNS request from ('127.0.0.1', 34145) to None: 40 bytes
+2243.4 12 | 2018-03-22T10:39:44+0000 [stdout#info] A query: b'ds-aksb-a.akamaihd.net'
+2243.5 12 | 2018-03-22T10:39:44+0000 [stdout#info] Result for b'ds-aksb-a.akamaihd.net' is ['63.216.54.153', '63.216.54.152']
+2288.2 41 | c : DNS request from ('127.0.0.1', 46998) to None: 34 bytes
+2288.3 12 | 2018-03-22T10:40:29+0000 [stdout#info] A query: b'www.google.co.uk'
+2288.3 12 | 2018-03-22T10:40:29+0000 [stdout#info] Result for b'www.google.co.uk' is ['64.233.181.94']
+2293.8 41 | c : DNS request from ('127.0.0.1', 47430) to None: 48 bytes
+2293.9 12 | 2018-03-22T10:40:35+0000 [stdout#info] A query: b'www-us.api.concursolutions.com'
+2294.0 12 | 2018-03-22T10:40:35+0000 [stdout#info] Result for b'www-us.api.concursolutions.com' is ['104.113.75.49']
+2295.5 41 | c : DNS request from ('127.0.0.1', 60005) to None: 30 bytes
+2295.6 12 | 2018-03-22T10:40:36+0000 [stdout#info] A query: b'www.bing.com'
+2295.6 12 | 2018-03-22T10:40:36+0000 [stdout#info] Result for b'www.bing.com' is ['13.107.21.200', '204.79.197.200']
+2296.5 41 | c : DNS request from ('127.0.0.1', 34360) to None: 38 bytes
+2296.7 12 | 2018-03-22T10:40:37+0000 [stdout#info] A query: b'dev.virtualearth.net'
+2296.8 12 | 2018-03-22T10:40:38+0000 [stdout#info] Result for b'dev.virtualearth.net' is ['40.77.231.3']
+2297.4 41 | c : DNS request from ('127.0.0.1', 42469) to None: 58 bytes
+2297.5 12 | 2018-03-22T10:40:38+0000 [stdout#info] A query: b't0.ssl.ak.dynamic.tiles.virtualearth.net'
+2297.5 41 | c : DNS request from ('127.0.0.1', 43451) to None: 58 bytes
+2297.5 12 | 2018-03-22T10:40:38+0000 [stdout#info] Result for b't0.ssl.ak.dynamic.tiles.virtualearth.net' is ['23.1.25.105']
+2297.7 12 | 2018-03-22T10:40:38+0000 [stdout#info] A query: b't1.ssl.ak.dynamic.tiles.virtualearth.net'
+2297.7 12 | 2018-03-22T10:40:39+0000 [stdout#info] Result for b't1.ssl.ak.dynamic.tiles.virtualearth.net' is ['23.45.145.200']
+2298.8 41 | c : DNS request from ('127.0.0.1', 38901) to None: 35 bytes
+2298.9 12 | 2018-03-22T10:40:40+0000 [stdout#info] A query: b'2018.springio.net'
+2299.2 41 | c : DNS request from ('127.0.0.1', 47688) to None: 35 bytes
+2299.2 41 | c : DNS request from ('127.0.0.1', 58916) to None: 37 bytes
+2299.4 12 | 2018-03-22T10:40:40+0000 [stdout#info] Result for b'2018.springio.net' is ['51.254.201.7']
+2299.4 12 | 2018-03-22T10:40:40+0000 [stdout#info] A query: b'fonts.gstatic.com'
+2299.4 12 | 2018-03-22T10:40:40+0000 [stdout#info] A query: b'maps.googleapis.com'
+2299.4 12 | 2018-03-22T10:40:40+0000 [stdout#info] Result for b'maps.googleapis.com' is ['74.125.69.95', '173.194.192.95', '64.233.183.95', '74.125.124.95', '108.177.112.95']
+2299.5 12 | 2018-03-22T10:40:40+0000 [stdout#info] Result for b'fonts.gstatic.com' is ['64.233.181.94']
+2301.4 41 | c : DNS request from ('127.0.0.1', 54269) to None: 38 bytes
+2301.4 41 | c : DNS request from ('127.0.0.1', 52048) to None: 34 bytes
+2301.5 12 | 2018-03-22T10:40:42+0000 [stdout#info] A query: b'fonts.googleapis.com'
+2301.6 12 | 2018-03-22T10:40:42+0000 [stdout#info] Result for b'fonts.googleapis.com' is ['64.233.181.95']
+2301.7 12 | 2018-03-22T10:40:42+0000 [stdout#info] A query: b'maps.gstatic.com'
+2301.7 12 | 2018-03-22T10:40:42+0000 [stdout#info] Result for b'maps.gstatic.com' is ['64.233.181.120', '64.233.181.94']
+2406.6 41 | c : DNS request from ('127.0.0.1', 41154) to None: 38 bytes
+2406.8 12 | 2018-03-22T10:42:27+0000 [stdout#info] A query: b'beacons.gcp.gvt2.com'
+2406.8 12 | 2018-03-22T10:42:27+0000 [stdout#info] Result for b'beacons.gcp.gvt2.com' is ['64.233.181.94']
+2408.4 41 | c : DNS request from ('127.0.0.1', 54001) to None: 37 bytes
+2408.6 12 | 2018-03-22T10:42:29+0000 [stdout#info] A query: b'clients6.google.com'
+2408.6 12 | 2018-03-22T10:42:29+0000 [stdout#info] Result for b'clients6.google.com' is ['64.233.181.101', '64.233.181.100', '64.233.181.138', '64.233.181.113', '64.233.181.102', '64.233.181.139']
+2414.3 41 | c : DNS request from ('127.0.0.1', 55291) to None: 58 bytes
+2414.3 41 | c : DNS request from ('127.0.0.1', 47912) to None: 58 bytes
+2414.4 12 | 2018-03-22T10:42:35+0000 [stdout#info] A query: b't1.ssl.ak.dynamic.tiles.virtualearth.net'
+2414.4 12 | 2018-03-22T10:42:35+0000 [stdout#info] A query: b't0.ssl.ak.dynamic.tiles.virtualearth.net'
+2414.4 12 | 2018-03-22T10:42:35+0000 [stdout#info] Result for b't1.ssl.ak.dynamic.tiles.virtualearth.net' is ['23.1.25.105']
+2414.6 12 | 2018-03-22T10:42:35+0000 [stdout#info] Result for b't0.ssl.ak.dynamic.tiles.virtualearth.net' is ['23.1.25.105']
+2509.5 41 | c : DNS request from ('127.0.0.1', 33608) to None: 27 bytes
+2509.6 12 | 2018-03-22T10:44:10+0000 [stdout#info] A query: b'slack.com'
+2509.6 12 | 2018-03-22T10:44:10+0000 [stdout#info] Result for b'slack.com' is ['13.33.164.32']
+2598.8 41 | c : DNS request from ('127.0.0.1', 39536) to None: 48 bytes
+2598.9 12 | 2018-03-22T10:45:40+0000 [stdout#info] A query: b'www-us.api.concursolutions.com'
+2598.9 12 | 2018-03-22T10:45:40+0000 [stdout#info] Result for b'www-us.api.concursolutions.com' is ['172.226.68.104']
+2600.0 41 | c : DNS request from ('127.0.0.1', 34752) to None: 47 bytes
+2600.1 12 | 2018-03-22T10:45:41+0000 [stdout#info] A query: b'd3f6xmy2of8mbx.cloudfront.net'
+2600.2 12 | 2018-03-22T10:45:41+0000 [stdout#info] Result for b'd3f6xmy2of8mbx.cloudfront.net' is ['13.33.165.2', '13.33.165.139', '13.33.165.229', '13.33.165.147', '13.33.165.249', '13.33.165.3', '13.33.165.184', '13.33.165.141']
+2615.2 41 | c : DNS request from ('127.0.0.1', 38830) to None: 40 bytes
+2615.2 41 | c : DNS request from ('127.0.0.1', 35851) to None: 33 bytes
+2615.2 41 | c : DNS request from ('127.0.0.1', 43945) to None: 43 bytes
+2615.2 41 | c : DNS request from ('127.0.0.1', 49360) to None: 33 bytes
+2615.2 41 | c : DNS request from ('127.0.0.1', 52797) to None: 32 bytes
+2615.2 41 | c : DNS request from ('127.0.0.1', 34630) to None: 33 bytes
+2615.4 12 | 2018-03-22T10:45:56+0000 [stdout#info] A query: b'adservice.google.co.uk'
+2615.4 12 | 2018-03-22T10:45:56+0000 [stdout#info] A query: b'apis.google.com'
+2615.4 12 | 2018-03-22T10:45:56+0000 [stdout#info] A query: b'lh3.googleusercontent.com'
+2615.4 12 | 2018-03-22T10:45:56+0000 [stdout#info] A query: b'ssl.gstatic.com'
+2615.4 12 | 2018-03-22T10:45:56+0000 [stdout#info] A query: b'www.google.com'
+2615.4 12 | 2018-03-22T10:45:56+0000 [stdout#info] A query: b'www.gstatic.com'
+2615.5 12 | 2018-03-22T10:45:56+0000 [stdout#info] Result for b'www.google.com' is ['74.125.201.106', '74.125.201.147', '74.125.201.103', '74.125.201.104', '74.125.201.99', '74.125.201.105']
+2615.5 12 | 2018-03-22T10:45:56+0000 [stdout#info] Result for b'lh3.googleusercontent.com' is ['74.125.124.132']
+2615.5 12 | 2018-03-22T10:45:56+0000 [stdout#info] Result for b'apis.google.com' is ['74.125.126.101', '74.125.126.113', '74.125.126.139', '74.125.126.138', '74.125.126.100', '74.125.126.102']
+2615.5 12 | 2018-03-22T10:45:56+0000 [stdout#info] Result for b'ssl.gstatic.com' is ['74.125.126.94']
+2615.5 12 | 2018-03-22T10:45:56+0000 [stdout#info] Result for b'www.gstatic.com' is ['64.233.181.94']
+2615.5 12 | 2018-03-22T10:45:56+0000 [stdout#info] Result for b'adservice.google.co.uk' is ['108.177.112.157', '108.177.112.154', '108.177.112.156', '108.177.112.155']
+2616.4 41 | c : DNS request from ('127.0.0.1', 37791) to None: 37 bytes
+2616.4 41 | c : DNS request from ('127.0.0.1', 55486) to None: 37 bytes
+2616.4 41 | c : DNS request from ('127.0.0.1', 46998) to None: 38 bytes
+2616.4 41 | c : DNS request from ('127.0.0.1', 44409) to None: 35 bytes
+2616.4 41 | c : DNS request from ('127.0.0.1', 44879) to None: 37 bytes
+2616.5 12 | 2018-03-22T10:45:57+0000 [stdout#info] A query: b'calendar.google.com'
+2616.5 12 | 2018-03-22T10:45:57+0000 [stdout#info] A query: b'accounts.google.com'
+2616.5 12 | 2018-03-22T10:45:57+0000 [stdout#info] A query: b'fonts.googleapis.com'
+2616.5 12 | 2018-03-22T10:45:57+0000 [stdout#info] A query: b'fonts.gstatic.com'
+2616.5 12 | 2018-03-22T10:45:57+0000 [stdout#info] A query: b'clients4.google.com'
+2616.6 12 | 2018-03-22T10:45:57+0000 [stdout#info] Result for b'fonts.googleapis.com' is ['74.125.126.95']
+2616.6 41 | c : DNS request from ('127.0.0.1', 60212) to None: 42 bytes
+2616.6 12 | 2018-03-22T10:45:57+0000 [stdout#info] Result for b'fonts.gstatic.com' is ['108.177.120.94']
+2616.6 12 | 2018-03-22T10:45:57+0000 [stdout#info] Result for b'accounts.google.com' is ['209.85.145.84']
+2616.6 12 | 2018-03-22T10:45:57+0000 [stdout#info] Result for b'calendar.google.com' is ['64.233.181.138', '64.233.181.102', '64.233.181.139', '64.233.181.113', '64.233.181.101', '64.233.181.100']
+2616.6 12 | 2018-03-22T10:45:57+0000 [stdout#info] Result for b'clients4.google.com' is ['64.233.181.113', '64.233.181.100', '64.233.181.101', '64.233.181.139', '64.233.181.138', '64.233.181.102']
+2616.7 12 | 2018-03-22T10:45:57+0000 [stdout#info] A query: b'notifications.google.com'
+2616.7 12 | 2018-03-22T10:45:58+0000 [stdout#info] Result for b'notifications.google.com' is ['64.233.181.101', '64.233.181.138', '64.233.181.102', '64.233.181.139', '64.233.181.113', '64.233.181.100']
+2618.0 41 | c : DNS request from ('127.0.0.1', 57700) to None: 37 bytes
+2618.1 12 | 2018-03-22T10:45:59+0000 [stdout#info] A query: b'clients6.google.com'
+2618.1 12 | 2018-03-22T10:45:59+0000 [stdout#info] Result for b'clients6.google.com' is ['74.125.126.139', '74.125.126.102', '74.125.126.100', '74.125.126.113', '74.125.126.138', '74.125.126.101']
+2619.9 41 | c : DNS request from ('127.0.0.1', 44640) to None: 37 bytes
+2620.0 12 | 2018-03-22T10:46:01+0000 [stdout#info] A query: b'contacts.google.com'
+2620.0 12 | 2018-03-22T10:46:01+0000 [stdout#info] Result for b'contacts.google.com' is ['64.233.181.113', '64.233.181.139', '64.233.181.101', '64.233.181.138', '64.233.181.100', '64.233.181.102']
+2625.0 41 | c : DNS request from ('127.0.0.1', 38128) to None: 45 bytes
+2625.1 12 | 2018-03-22T10:46:06+0000 [stdout#info] A query: b'safebrowsing.googleapis.com'
+2625.1 12 | 2018-03-22T10:46:06+0000 [stdout#info] Result for b'safebrowsing.googleapis.com' is ['173.194.198.95']
+2625.3 41 | c : DNS request from ('127.0.0.1', 57502) to None: 45 bytes
+2625.5 12 | 2018-03-22T10:46:06+0000 [stdout#info] A query: b'safebrowsing.googleapis.com'
+2625.5 12 | 2018-03-22T10:46:06+0000 [stdout#info] Result for b'safebrowsing.googleapis.com' is ['173.194.198.95']
+2630.7 41 | c : DNS request from ('127.0.0.1', 55088) to None: 53 bytes
+2630.8 12 | 2018-03-22T10:46:12+0000 [stdout#info] A query: b'calendarsuggest.clients6.google.com'
+2630.9 12 | 2018-03-22T10:46:12+0000 [stdout#info] Result for b'calendarsuggest.clients6.google.com' is ['74.125.126.95']
+2631.7 41 | c : DNS request from ('127.0.0.1', 39547) to None: 37 bytes
+2631.8 12 | 2018-03-22T10:46:13+0000 [stdout#info] A query: b'maps.googleapis.com'
+2631.8 12 | 2018-03-22T10:46:13+0000 [stdout#info] Result for b'maps.googleapis.com' is ['74.125.124.95', '108.177.112.95', '173.194.196.95', '74.125.202.95']
+2657.7 41 | c : DNS request from ('127.0.0.1', 41151) to None: 38 bytes
+2657.9 12 | 2018-03-22T10:46:39+0000 [stdout#info] A query: b'beacons.gcp.gvt2.com'
+2657.9 12 | 2018-03-22T10:46:39+0000 [stdout#info] Result for b'beacons.gcp.gvt2.com' is ['64.233.181.94']
+2675.5 41 | c : DNS request from ('127.0.0.1', 48556) to None: 34 bytes
+2675.6 12 | 2018-03-22T10:46:56+0000 [stdout#info] A query: b'www.google.co.uk'
+2675.6 12 | 2018-03-22T10:46:56+0000 [stdout#info] Result for b'www.google.co.uk' is ['64.233.181.94']
+2679.4 41 | c : DNS request from ('127.0.0.1', 57265) to None: 28 bytes
+2679.5 12 | 2018-03-22T10:47:00+0000 [stdout#info] A query: b'google.com'
+2679.5 12 | 2018-03-22T10:47:00+0000 [stdout#info] Result for b'google.com' is ['64.233.181.138', '64.233.181.101', '64.233.181.102', '64.233.181.139', '64.233.181.113', '64.233.181.100']
+2705.1 41 | c : DNS request from ('127.0.0.1', 52420) to None: 43 bytes
+2705.2 12 | 2018-03-22T10:47:26+0000 [stdout#info] A query: b'lh3.googleusercontent.com'
+2705.2 12 | 2018-03-22T10:47:26+0000 [stdout#info] Result for b'lh3.googleusercontent.com' is ['74.125.124.132']
+2736.6 41 | c : DNS request from ('127.0.0.1', 39751) to None: 32 bytes
+2736.7 12 | 2018-03-22T10:47:57+0000 [stdout#info] A query: b'slack-imgs.com'
+2736.7 12 | 2018-03-22T10:47:58+0000 [stdout#info] Result for b'slack-imgs.com' is ['13.33.162.66']
+2738.3 41 | c : DNS request from ('127.0.0.1', 54049) to None: 35 bytes
+2738.4 12 | 2018-03-22T10:47:59+0000 [stdout#info] A query: b'pivotal.slack.com'
+2738.4 12 | 2018-03-22T10:47:59+0000 [stdout#info] Result for b'pivotal.slack.com' is ['13.33.164.32']
+2745.9 41 | c : DNS request from ('127.0.0.1', 40875) to None: 43 bytes
+2745.9 41 | c : DNS request from ('127.0.0.1', 57049) to None: 43 bytes
+2745.9 41 | c : DNS request from ('127.0.0.1', 52459) to None: 43 bytes
+2746.0 12 | 2018-03-22T10:48:07+0000 [stdout#info] A query: b'ci5.googleusercontent.com'
+2746.0 12 | 2018-03-22T10:48:07+0000 [stdout#info] A query: b'ci4.googleusercontent.com'
+2746.0 12 | 2018-03-22T10:48:07+0000 [stdout#info] A query: b'ci3.googleusercontent.com'
+2746.1 12 | 2018-03-22T10:48:07+0000 [stdout#info] Result for b'ci5.googleusercontent.com' is ['64.233.181.132']
+2746.1 12 | 2018-03-22T10:48:07+0000 [stdout#info] Result for b'ci3.googleusercontent.com' is ['74.125.126.132']
+2746.1 12 | 2018-03-22T10:48:07+0000 [stdout#info] Result for b'ci4.googleusercontent.com' is ['64.233.181.132']
+2746.3 41 | c : DNS request from ('127.0.0.1', 53944) to None: 31 bytes
+2746.5 12 | 2018-03-22T10:48:07+0000 [stdout#info] A query: b'gm1.ggpht.com'
+2746.5 12 | 2018-03-22T10:48:07+0000 [stdout#info] Result for b'gm1.ggpht.com' is ['64.233.181.132']
+2752.4 41 | c : DNS request from ('127.0.0.1', 53468) to None: 27 bytes
+2752.7 12 | 2018-03-22T10:48:13+0000 [stdout#info] A query: b'slack.com'
+2752.7 12 | 2018-03-22T10:48:13+0000 [stdout#info] Result for b'slack.com' is ['52.85.87.6']
+2754.1 41 | c : DNS request from ('127.0.0.1', 34259) to None: 27 bytes
+2754.2 12 | 2018-03-22T10:48:15+0000 [stdout#info] A query: b'gitter.im'
+2754.3 12 | 2018-03-22T10:48:15+0000 [stdout#info] Result for b'gitter.im' is ['52.70.52.152', '34.237.203.41']
+2769.7 41 | c : DNS request from ('127.0.0.1', 40105) to None: 47 bytes
+2769.9 12 | 2018-03-22T10:48:31+0000 [stdout#info] A query: b'gae-nel-us-east1.gcp.gvt2.com'
+2769.9 12 | 2018-03-22T10:48:31+0000 [stdout#info] Result for b'gae-nel-us-east1.gcp.gvt2.com' is ['64.233.181.121']
+2846.4 41 | c : DNS request from ('127.0.0.1', 45709) to None: 53 bytes
+2846.6 12 | 2018-03-22T10:49:47+0000 [stdout#info] A query: b'cloudconsole-pa.clients6.google.com'
+2846.6 12 | 2018-03-22T10:49:47+0000 [stdout#info] Result for b'cloudconsole-pa.clients6.google.com' is ['74.125.126.95']
+2855.1 TL | Main process (['bash', '--norc']) exited with code 0.
+2855.1 TL | Shutting down local process...
+2855.1 TL | [51] Running: (['fusermount', '-z', '-u', '/tmp/tmpdaopp9e6'],)...
+2855.1 TL | [51] ran.
+2855.1 41 | >> iptables -t nat -D OUTPUT -j sshuttle-12300
+2855.1 41 | >> iptables -t nat -D PREROUTING -j sshuttle-12300
+2855.1 41 | Connection to localhost closed by remote host.
+2855.1 41 | >> iptables -t nat -F sshuttle-12300
+2855.1 TL | [52] Running: (['kubectl', '--context', 'gke', '--namespace', 'default', 'delete', 'deployment', 'doubler'],)...
+2855.1 41 | >> iptables -t nat -X sshuttle-12300
+2860.7 52 | deployment "doubler" deleted
+2860.7 TL | [52] ran.
+2860.7 TL | [53] Running: (['kubectl', '--context', 'gke', '--namespace', 'default', 'apply', '-f', '-'],)...
+2861.8 53 | deployment "doubler" created
+2861.8 TL | [53] ran.
